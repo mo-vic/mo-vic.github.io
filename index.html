@@ -275,171 +275,25 @@ mjx-container[display="true"] + br {
 </ul>
 <!-- tocstop -->
 
-<h1><span id="latex学习笔记">Latex学习笔记</span></h1><h2><span id="latex文档语法">Latex文档语法</span></h2><p><strong>教程地址</strong>：<a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes</a></p>
-<h3><span id="class">class</span></h3><p>文档基本元素：</p>
+<h1 id="Latex学习笔记"><a href="#Latex学习笔记" class="headerlink" title="Latex学习笔记"></a>Latex学习笔记</h1><h2 id="Latex文档语法"><a href="#Latex文档语法" class="headerlink" title="Latex文档语法"></a>Latex文档语法</h2><p><strong>教程地址</strong>：<a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes</a></p>
+<h3 id="class"><a href="#class" class="headerlink" title="class"></a>class</h3><p>文档基本元素：</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 文档类型通过\documentclass&#123;&#125;进行设置</span></span><br><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 文档主体</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
 <p>写论文的话，可以从期刊官网下载模板，在模板的基础上进行修改，添加自己的内容。</p>
-<h3><span id="preamble">preamble</span></h3><p>指的是<code>\begin&#123;document&#125;</code>之前的所有内容，用于指定文档字符编码、导入使用的包等等。</p>
+<h3 id="preamble"><a href="#preamble" class="headerlink" title="preamble"></a>preamble</h3><p>指的是<code>\begin&#123;document&#125;</code>之前的所有内容，用于指定文档字符编码、导入使用的包等等。</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 12pt是指字体大小，a4paper是指纸张大小</span></span><br><span class="line"><span class="keyword">\documentclass</span>[12pt, a4paper]&#123;article&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 指定文档编码</span></span><br><span class="line"><span class="keyword">\usepackage</span>[utf8]&#123;inputenc&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="标题-作者-日期">标题、作者、日期</span></h3><p>在<a href="#preamble">preamble</a>中添加。文章标题不能有下划线。</p>
+<h3 id="标题、作者、日期"><a href="#标题、作者、日期" class="headerlink" title="标题、作者、日期"></a>标题、作者、日期</h3><p>在<a href="#preamble">preamble</a>中添加。文章标题不能有下划线。</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[12pt, a4paper]&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[utf8]&#123;inputenc&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\title</span>&#123;Hello World&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;movic <span class="keyword">\thanks</span>&#123;funded by the movic studio&#125;&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;April 2020&#125;</span><br></pre></td></tr></table></figure>
 <p>显示标题信息，在body中添加<code>\maketitle</code>：</p>
 <figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="添加注释">添加注释</span></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% %为注释符号</span></span><br></pre></td></tr></table></figure>
-<h3><span id="粗体-斜体-下划线">粗体、斜体、下划线</span></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 粗体</span></span><br><span class="line"><span class="keyword">\textbf</span>&#123;&#125;</span><br><span class="line"><span class="comment">% 斜体</span></span><br><span class="line"><span class="keyword">\textit</span>&#123;&#125;</span><br><span class="line"><span class="comment">% 下划线</span></span><br><span class="line"><span class="keyword">\underline</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>强调</strong>：使用<code>\emph</code>命令的文本会变为斜体，如果原文本已经是斜体，则使用该命令的文本变为正体。</p>
-<p><strong>注意</strong>：有些包如<code>Beamer</code>，会改变<code>\emph</code>的行为。</p>
-<h3><span id="插入图片">插入图片</span></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 1. 导包</span></span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 2. 指定图片路径</span></span><br><span class="line"><span class="keyword">\graphicspath</span>&#123;&#123;images/&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 3. 插入图片</span></span><br><span class="line"><span class="keyword">\includegraphics</span>&#123;filename&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意</strong>：图片文件名可加后缀名，也可不加，建议使用小写字母，不能有空格和多个点。</p>
-<h3><span id="图片说明标签与引用">图片说明，标签与引用</span></h3><blockquote>
-<p><em>Note: If you are using captions and references on your own computer, you will have to compile the document twice for the references to work.</em> </p>
-</blockquote>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[h] <span class="comment">% h即here，表示在当前位置插入图片</span></span><br><span class="line">	<span class="keyword">\centering</span> <span class="comment">% 居中</span></span><br><span class="line">	<span class="keyword">\caption</span>&#123;top caption&#125; <span class="comment">% 上描述</span></span><br><span class="line">	<span class="keyword">\includegraphics</span>[width=0.25<span class="keyword">\textwidth</span>]&#123;file path&#125;</span><br><span class="line">	<span class="keyword">\caption</span>&#123;bottom caption&#125; <span class="comment">% 下描述</span></span><br><span class="line">	<span class="keyword">\label</span>&#123;fig:figname&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\ref</span>&#123;fig:figname&#125; <span class="comment">% 引用图片</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 在twocolumn页面格式中将图片占用两列显示</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;figure*&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure*&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="表格">表格</span></h3><p>直接使用TexMaker自带的表格向导就好了。</p>
-<p><strong><code>table</code>与<code>tabular</code>的关系</strong>：和<code>figure</code>与<code>\includegraphics</code>的关系类似，<code>figure</code>包含<code>\includegraphics</code>，<code>table</code>包含<code>tabular</code>。<code>figure</code>和<code>table</code>都可以添加<code>caption</code>和<code>label</code>。</p>
-<blockquote>
-<p><em>Note: If you are using captions and references on your own computer, you will have to compile the document twice for the references to work.</em></p>
-</blockquote>
-<h3><span id="无序列表">无序列表</span></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;itemize&#125;</span><br><span class="line">	<span class="keyword">\item</span> this is a</span><br><span class="line">	<span class="keyword">\item</span> this is b</span><br><span class="line"><span class="keyword">\end</span>&#123;itemize&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="有序列表">有序列表</span></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;enumerate&#125;</span><br><span class="line">    <span class="keyword">\item</span> a</span><br><span class="line">    <span class="keyword">\item</span> b</span><br><span class="line">    <span class="keyword">\item</span> c</span><br><span class="line">    <span class="keyword">\item</span> d</span><br><span class="line"><span class="keyword">\end</span>&#123;enumerate&#125;</span><br></pre></td></tr></table></figure>
-<h3><span id="数学公式">数学公式</span></h3><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% inline</span></span><br><span class="line"><span class="built_in">$</span>...<span class="built_in">$</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% display</span></span><br><span class="line"><span class="keyword">\[</span>...<span class="keyword">\]</span></span><br><span class="line"><span class="comment">% 不建议使用：</span></span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span>...<span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 带序号</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;equation&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;</span><br><span class="line"><span class="comment">% note: equation环境由amsmath包提供</span></span><br></pre></td></tr></table></figure>
-
-
-<h3><span id="基本排版">基本排版</span></h3><h4><span id="摘要">摘要</span></h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;abstract&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;abstract&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="段落">段落</span></h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 双回车生成新段落</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 强行换行使用\\，但不建议使用</span></span><br></pre></td></tr></table></figure>
-<h4><span id="章节和小节">章节和小节</span></h4><blockquote>
-<p>Note that <strong><code>\part</code></strong> and <strong><code>\chapter</code></strong> are only available in <em>report</em> and <em>book</em> document classes.</p>
-</blockquote>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Numbered section</span></span><br><span class="line"><span class="keyword">\section</span>&#123;title&#125;</span><br><span class="line"><span class="keyword">\subsection</span>&#123;title&#125;</span><br><span class="line"><span class="keyword">\subsubsection</span>&#123;title&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Unnumbered section</span></span><br><span class="line"><span class="keyword">\section</span>*&#123;title&#125;</span><br></pre></td></tr></table></figure>
-<h4><span id="目录">目录</span></h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\tabelofcontents</span>  <span class="comment">% 可放置在\begin&#123;document&#125;的下方</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<h2><span id="miktex与texmaker的安装与使用">MikTex与TexMaker的安装与使用</span></h2><h3><span id="安装miktex">安装MikTex</span></h3><p><strong>下载链接</strong>：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/win32/miktex/setup/windows-x64/basic-miktex-2.9.7386-x64.exe">https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/win32/miktex/setup/windows-x64/basic-miktex-2.9.7386-x64.exe</a></p>
-<p><strong>Tex教程</strong>：<a target="_blank" rel="noopener" href="https://texfaq.org/">https://texfaq.org/</a></p>
-<p><strong>Overleaf的Latex教程</strong>：<a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Tutorials">https://www.overleaf.com/learn/latex/Tutorials</a></p>
-<h3><span id="texmaker的使用">TexMaker的使用</span></h3><p><strong>官网</strong>：<a target="_blank" rel="noopener" href="https://www.xm1math.net/texmaker/index.html">https://www.xm1math.net/texmaker/index.html</a></p>
-<p><strong>下载</strong>：<a target="_blank" rel="noopener" href="https://www.xm1math.net/texmaker/download.html">https://www.xm1math.net/texmaker/download.html</a></p>
-<p><strong>文档</strong>：<a target="_blank" rel="noopener" href="https://www.xm1math.net/texmaker/doc.html">https://www.xm1math.net/texmaker/doc.html</a></p>
-<h4><span id="1-配置">1. 配置</span></h4><h5><span id="11-配置字符集编码">1.1 配置字符集编码</span></h5><blockquote>
-<p>Before compiling your first document, you must set the encoding used by the editor (“Configure Texmaker” -&gt; “Editor” -&gt; “Editor Font Encoding”). Then, you should use the same encoding in the preamble of yours TeX documents.</p>
-</blockquote>
-<h5><span id="12-配置latex相关命令">1.2 配置Latex相关命令</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/config_latex.png" class title="默认配置">
-
-<h5><span id="13-配置拼写检查">1.3 配置拼写检查</span></h5><blockquote>
-<p>To configure the spell checker : “Configure Texmaker” -&gt; “Editor” -&gt; “Spelling dictionary” -&gt; click on the button at the end of the line to select the dictionary with the file browser</p>
-</blockquote>
-<blockquote>
-<p>During typing, if there is an error, the word is underlined by a red underline. A right-click on the word opens a contextual menu in which there are some replacement suggestions. Click on the desired word to make the replacement</p>
-</blockquote>
-<p><strong>Tips</strong>： 鼠标右击拼写错误的单词，会有修改提示。</p>
-<h4><span id="2-编辑">2. 编辑</span></h4><h5><span id="21-快速文档向导">2.1 快速文档向导</span></h5><blockquote>
-<p>To define the preamble of your document, you can use the “Quick start” wizard (“Wizard” menu)</p>
-</blockquote>
-<h5><span id="22-结构化文档">2.2 结构化文档</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/add_part_chapter_section.png" class title="添加章节">
-
-<p>点击该图标添加章节，子章节……</p>
-<h5><span id="23-最多三个书签单击行号添加">2.3 最多三个书签，单击行号添加</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/add_bookmark.png" class title="添加书签">
-
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/jump_to_bookmark.png" class title="跳转到书签">
-
-<h5><span id="24-格式化文本">2.4 格式化文本</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/format_text.png" class title="格式化文本">
-
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/font_size.png" class title="调整字体大小">
-
-<h5><span id="25-空格">2.5 空格</span></h5><p><strong>文本</strong>：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/text_space.png" class title="文本间隔">
-
-<p><strong>数学</strong>：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/math_space.png" class title="数学间隔">
-
-<h5><span id="26-插入列表">2.6 插入列表</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/list.png" class title="插入列表">
-
-<h5><span id="27-插入表格">2.7 插入表格</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/table_wizard.png" class title="插入表格">
-
-<h5><span id="28-插入制表符">2.8 插入制表符</span></h5><blockquote>
-<p>To help you to insert a “tabbing” code, you can use the “Tabbing” wizard (“Wizard” menu)</p>
-</blockquote>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/tabbing_wizard.png" class title="制表符插入向导">
-
-<h5><span id="29-插入图片">2.9 插入图片</span></h5><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\usepackage</span>[pdftex]&#123;graphicx&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/includegraphics.png" class title="插入图片">
-
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image_wizard.png" class title="插入图片向导">
-
-<h5><span id="210-引用和备注">2.10 引用和备注</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/reference.png" class title="引用">
-
-<h5><span id="211-常用数学符号">2.11 常用数学符号</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/math_symbol.png" class title="常用数学符号">
-
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/math_symbols.png" class title="常用数学符号">
-
-<p><strong>收藏的符号</strong>：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/favorite_symbols.png" class title="收藏的符号">
-
-<p><strong>右键加入收藏</strong>：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/add_to_favorite.png" class title="右键加入收藏">
-
-<p><strong>快速插入数组、矩阵</strong>：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/array_wizard.png" class title="插入数组">
-
-<h5><span id="212-占位符">2.12 占位符</span></h5><p><strong>Tip</strong>：使用<code>Tab</code>键可以切换字段。</p>
-<h4><span id="3-编译文档">3. 编译文档</span></h4><h5><span id="31-编译">3.1 编译</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/build.png" class title="编译">
-
-<p><strong>注意</strong>：必须要有文件名，文件名不能有空格。</p>
-<h5><span id="32-清除生成的中间文件">3.2 清除生成的中间文件</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/build_clear.png" class title="清除历史记录">
-
-<h5><span id="33-同步pdf">3.3 同步PDF</span></h5><blockquote>
-<p>If you add the “-synctex=1” option to the pdflatex command, the built-in pdf viewer will jump directly to the position in the PDF file that corresponds to the current line in the (La)TeX source file.<br>Reciprocally, with a right-clic on a word in the built-in pdf viewer (context menu), the editor will jump to the corresponding line in the source file.</p>
-</blockquote>
-<h4><span id="4-其他特性">4. 其他特性</span></h4><h5><span id="41-参考文献">4.1 参考文献</span></h5><p><strong>步骤</strong>：先编译<code>tex</code>文件，再用<code>bibtex</code>编译<code>tex</code>文件，最后再编译<code>tex</code>文件。如果因为DOI编译不通过，尝试对下划线进行转义。</p>
-<blockquote>
-<p> Note: the optional fields can be automatically deleted with the “Clean” command of the “Bibliography” menu.</p>
-</blockquote>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/bib_clear.png" class title="清除历史记录">
-
-<p><strong>插入示例</strong>：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/bibliography_example.png" class title="参考文献源码示例">
-
-<h5><span id="42-source-viewer">4.2 Source Viewer</span></h5><img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/show_source_viewer.png" class title="打开Source Viewer">
-
-<p><strong>文档差异对比（挺实用的）</strong>：</p>
-<p><strong>使用方式</strong>：点击左侧图标打开一个对比文件，点击右侧图标查看差异：</p>
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/source_viewer_panel.png" class title="Source Viewer控制面板">
-
-<img src="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/check_differences.png" class title="示例效果">
-
-
-
-<h2><span id="第三方差异高亮工具git-latexdiff的安装与使用">第三方差异高亮工具<code>git-latexdiff</code>的安装与使用</span></h2><p>下载链接：<a target="_blank" rel="noopener" href="https://gitlab.com/git-latexdiff/git-latexdiff">https://gitlab.com/git-latexdiff/git-latexdiff</a></p>
-<p>需要注意的点是：</p>
-<blockquote>
-<p><strong>On Windows</strong></p>
-<p>Windows users are likely to be using this tool inside the so-called “Git Bash for Windows” environment which is included in Git for Windows.</p>
-<p>In this environment, the provided version of perl might be unable to run <code>latexdiff</code>. You can install a different perl distribution, for instance <a target="_blank" rel="noopener" href="http://strawberryperl.com/">Strawberry Perl</a>. Then, you must put Strawberry Perl’s folders before anything else in your <code>PATH</code> and run <code>latexdiff</code> and <code>git-latexdiff</code>.</p>
-<p><strong>Such a change could interfere with the tools in the “Git Bash for Windows” environment, so the <code>PATH</code> change should be restricted to uses of <code>latexdiff</code>.</strong></p>
-</blockquote>
-<p>我看不懂Windows安装脚本，里面有关于获取权限的代码，不知是否安全，可以只复制最后一句代码，然后用管理员模式运行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">::::::::::::::::::::::::::::</span><br><span class="line">::START</span><br><span class="line">::::::::::::::::::::::::::::</span><br><span class="line"></span><br><span class="line">rem Run me as Administrator</span><br><span class="line">set SCRIPT&#x3D;git-latexdiff</span><br><span class="line">for &#x2F;f &quot;delims&#x3D;&quot; %%i in (&#39;git --exec-path&#39;) do copy &#x2F;Y %~dp0\%SCRIPT% &quot;%%i\%SCRIPT%&quot;</span><br><span class="line">pause 0</span><br></pre></td></tr></table></figure>
-<p>如果使用<code>Git</code>的过程中发现出现异常，则把Perl的环境变量移动到最底下。</p>
-<p><strong>git-latexdiff</strong>使用的注意事项：</p>
-<ol>
-<li><code>git-latexdiff</code>不需要提供两份（新旧）对比的工程文件，只需要指定Git的版本标签，使得可以跟Git无缝衔接；</li>
-<li>记得指定输出临时目录<code>--tmpdirprefix</code>，不然输出结果很难找；</li>
-<li><code>--cleanup</code>设置为<code>none</code>，用于保留输出结果；</li>
-<li>指定<code>-b</code>参数可以顺带走完文献引用流程；</li>
-<li>标准命令：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git latexdiff HEAD -- --main bare_jrnl.tex -b --cleanup none --tmpdirprefix .&#x2F;latexdiff</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>表格<code>multirow</code>使用习惯从<code>\multirow&#123;5&#125;*</code>改为<code>\multirow&#123;5&#125;&#123;*&#125;</code></li>
-</ol>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cklahh5zp0000xysm2wvy75ux" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cklaimam200000gjhby7tfje7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Latex/" rel="tag">Latex</a></li></ul>
@@ -499,84 +353,24 @@ mjx-container[display="true"] + br {
 </ul>
 <!-- tocstop -->
 
-<h2><span id="hexo个人博客小站维护和使用笔记">Hexo个人博客小站维护和使用笔记</span></h2><p>才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发了。今天重新回忆一下当时安装和使用的流程，并整理成笔记，方便日后查阅。</p>
-<h2><span id="一-hexo的安装">一、 Hexo的安装</span></h2><p><code>Hexo</code>的安装需要先安装<code>Node.js</code>和<code>Git</code>，具体安装步骤参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/%E3%80%82%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E7%AE%97%E6%98%AF%E6%AF%94%E8%BE%83%E7%AE%80%E5%8D%95%E3%80%82">https://hexo.io/zh-cn/docs/。安装过程算是比较简单。</a></p>
-<h2><span id="二-建站">二、建站</span></h2><p>建站教程参考链接：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup">https://hexo.io/zh-cn/docs/setup</a></p>
+<h2 id="Hexo个人博客小站维护和使用笔记"><a href="#Hexo个人博客小站维护和使用笔记" class="headerlink" title="Hexo个人博客小站维护和使用笔记"></a>Hexo个人博客小站维护和使用笔记</h2><p>才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发了。今天重新回忆一下当时安装和使用的流程，并整理成笔记，方便日后查阅。</p>
+<h2 id="一、-Hexo的安装"><a href="#一、-Hexo的安装" class="headerlink" title="一、 Hexo的安装"></a>一、 Hexo的安装</h2><p><code>Hexo</code>的安装需要先安装<code>Node.js</code>和<code>Git</code>，具体安装步骤参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/%E3%80%82%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E7%AE%97%E6%98%AF%E6%AF%94%E8%BE%83%E7%AE%80%E5%8D%95%E3%80%82">https://hexo.io/zh-cn/docs/。安装过程算是比较简单。</a></p>
+<h2 id="二、建站"><a href="#二、建站" class="headerlink" title="二、建站"></a>二、建站</h2><p>建站教程参考链接：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup">https://hexo.io/zh-cn/docs/setup</a></p>
 <p>安装 <code>Hexo</code> 完成后，执行下列命令，<code>Hexo</code> 将会在指定文件夹中新建所需要的文件。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
 <p>文件目录结构：</p>
 <p><strong>scaffolds</strong>：模板文件夹，新建文章时，<code>Hexo</code>会根据模板来建立<code>.md</code>文件。</p>
 <p><strong>source</strong>：存放用户资源的地方，除了<code>_posts</code>文件夹之外，开头命名为<code>_</code>（下划线）的文件/文件夹和隐藏文件将会被忽略。</p>
 <p><strong>themes</strong>：主题文件夹。</p>
-<h2><span id="三-配置">三、配置</span></h2><p>根目录下的<code>_config.yml</code>为配置文件，配置项较多，可参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a></p>
-<h2><span id="四-写作">四、写作</span></h2><h3><span id="41-新建文章">4.1 新建文章</span></h3><p>执行下列命令创建一篇新文章或者新的页面：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo new [layout] &lt;title&gt;</span></span><br></pre></td></tr></table></figure>
-<p><code>Hexo</code>默认以标题作为文件名称，但是可以通过设置目录下的<code>_config.yml</code>配置文件中的<code>new_post_name</code>参数来改变默认的文件名称格式。</p>
-<h3><span id="42-front-matter">4.2 Front-matter</span></h3><p>Front-matter是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量。其中<code>updated</code>参数用于指定更新日期。</p>
-<p>多个并列标签的设置方法：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">游戏</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">电影</span></span><br></pre></td></tr></table></figure>
-<p>多个并列分类以及多级分类的设置方法：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line">	<span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">杂项</span>]</span><br><span class="line">	<span class="bullet">-</span> [<span class="string">学习</span>]</span><br></pre></td></tr></table></figure>
-<p>其中，<code>杂项</code>是<code>日常</code>的子分类，<code>学习</code>没有子分类。</p>
-<h3><span id="43-标签插件">4.3 标签插件</span></h3><p>用于插入图片、代码块以及引用等，大部分与<code>MarkDown</code>格式不同（代码块格式可以使用MarkDown格式）。</p>
-<h3><span id="44-文章资源文件夹">4.4 文章资源文件夹</span></h3><p>文章资源文件夹用于存放除了文章以外的所有资源文件，例如图片等。通过将<code>_config.yml</code>配置文件中的<code>post_asset_folder</code>选项设置为<code>true</code>来打开资源文件管理功能：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>当资源文件管理功能打开后，<code>Hexo</code>会在每一次通过<code>hexo new [layout] title</code>命令创建新文章时自动创建一个文章同名文件夹，将图片等资源文件放在该资源文件夹中，即可通过相对路径在文章中进行引用，即<code>{% asset_img filename.png %}</code>（若直接使用<code>![title](filename.png)</code>插入图片，由于<code>.md</code>文件跟图片资源文件还隔着一层目录，<code>Typora</code>编辑器上没法显示出图片；同时，以这种方式插入图片，会导致图片在主页无法显示，只有点击进入文章页面才能显示图片）。</p>
-<h3><span id="45-写作流程">4.5 写作流程</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. 新建文章</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo new [layout] &lt;title&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 设置分类和标签</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 本地预览</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 4. 部署</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 5. 版本管理</span></span><br></pre></td></tr></table></figure>
-
-
-<h2><span id="五-插件">五、插件</span></h2><p><code>Hexo</code>插件的安装方法：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install `plugin` --save</span></span><br></pre></td></tr></table></figure>
-
-
-<ol>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/cocowool/hexo-image-link">hexo-image-link</a>：用于将<code>MarkDown</code>图片路径转换成<code>asset_img</code>语法格式，使得在<code>Hexo</code>和<code>Typora</code>两边都能够正常显示图片。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image file label](./markdown-file-name/local-image.png) -&gt; {% asset_img label local-image.png %}</span><br></pre></td></tr></table></figure>
-<p>实际使用中发现如果加上图片路径最前面的<code>./</code>会导致出现<code>Markdown Image Path does not exists!</code>错误，去掉图片路径最前面的<code>./</code>对<code>Typora</code>编辑器引用图片没有影响：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image file label](markdown-file-name/local-image.png) -&gt; {% asset_img label local-image.png %}</span><br></pre></td></tr></table></figure>
-<img src="/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/banner.jpg" class title="图片测试">
-
-
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-filter-mathjax">hexo-filter-mathjax</a>：该插件不需要安装任何其他的数学插件，渲染引擎可以使用<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>。包含公式的文章需要在<code>.md</code>文件前面的Front-matter中打开<code>mathjax</code>：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
-<p>手机端可以比较完美显示公式，<code>$$</code>公式块过长会自动加入滚动条，<code>hexo-math</code>插件使用<code>{% %}</code>tag插入公式，而我比较习惯于使用<code>$</code>或<code>$$</code>插入公式，所以选择了<a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-filter-mathjax">hexo-filter-mathjax</a>插件，公式的换行符<code>\\</code>需要在<code>\begin{array} \end{array}</code>之类的环境中才能够生效。<br><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="8.607ex" height="2.185ex" role="img" focusable="false" viewbox="0 -883.9 3804.1 965.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D404" d="M723 286Q721 284 700 145T677 3V0H39V62H147V618H39V680H660V676Q662 670 675 552T691 428V424H629V428Q629 429 627 448T618 494T601 541Q574 593 527 605T382 618H374H304V384H336Q338 384 347 384T361 384T376 386T392 390T407 397T421 407T432 423Q442 444 443 482V501H505V205H443V224Q442 258 435 278T411 307T380 318T336 322H304V62H375H394Q429 62 449 62T497 66T541 76T577 95T609 126T632 170T651 232Q661 287 661 289H723V286Z"/></g></g><g data-mml-node="mo" transform="translate(1033.8, 0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mi" transform="translate(2089.6, 0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="msup" transform="translate(2967.6, 0)"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"/></g><g data-mml-node="mn" transform="translate(433, 413) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g></g></g></g></svg></mjx-container></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-toc">hexo-toc</a>：用于插入目录。与<code>Typora</code>插入目录不同，<a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-toc">hexo-toc</a>不使用<code>[toc]</code>。使用<code>[toc]</code>标签会导致页面出现一个莫名其妙的纯文本<code>[toc]</code>，看着很不舒服。</p>
-</li>
-</ol>
-<h2><span id="六-部署">六、部署</span></h2><p>使用<code>Travis CI</code>将<code>Hexo</code>博客部署到GitHub Pages上：</p>
-<ol>
-<li><p>新建一个仓库，以<code>&lt;GitHub用户名&gt;.github.io</code>命名；</p>
-</li>
-<li><p>将<code>Hexo</code>站点文件夹推送到新建的<code>GitHub</code>仓库中；</p>
-</li>
-<li><p>将<code>Travis CI</code>添加到<code>GitHub</code>账户中；</p>
-</li>
-<li><p>前往<code>GitHub</code>的<code>Application settings</code>，配置<code>Travis CI</code>的权限使其能够访问<code>GitHub</code>仓库；</p>
-</li>
-<li><p>到<code>GitHub</code>账户设置中，选择<code>Developer settings -&gt; Personal access tokens -&gt; Generate new token</code>，只勾选<code>repo</code>的权限并生成一个新的<code>Token</code>；</p>
-</li>
-<li><p>前往<code>Travis CI</code>，在仓库的设置页面中，新建一个环境变量，变量名为<code>GH_TOKEN</code>，值为生成的<code>Token</code>，确保<code>DISPLAY VALUE IN BUILD LOG</code>不被勾选避免<code>Token</code>泄漏；</p>
-</li>
-<li><p>在<code>Hexo</code>站点文件夹中新建一个<code>.travis.yml</code>文件：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">10</span> <span class="comment"># use nodejs v10 LTS</span></span><br><span class="line"><span class="attr">cache:</span> <span class="string">npm</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">source</span> <span class="comment"># 只构建你的站点源文件分支</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span> <span class="comment"># generate static files</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">pages</span></span><br><span class="line">  <span class="attr">skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github-token:</span> <span class="string">$GH_TOKEN</span></span><br><span class="line">  <span class="attr">keep-history:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">on:</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span> <span class="comment"># 部署在你的master分支，确保GitHub Pages的部署分支为master</span></span><br><span class="line">  <span class="attr">local-dir:</span> <span class="string">public</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将<code>.travis.yml</code>推送到<code>GitHub</code>仓库中；</p>
-</li>
-<li><p>前往<code>GitHub</code>仓库，修改<code>GitHub Pages</code>的部署分支为<code>master</code>；</p>
-</li>
-<li><p>创建<code>source</code>站点源文件分支，使用<code>Git</code>做好版本控制；</p>
-</li>
-<li><p>前往<code>Travis CI</code>，在仓库的设置页面中，打开<code>Build pushed branches</code>选项。</p>
-</li>
-</ol>
-<h2><span id="七-npm">七、npm</span></h2><p><code>package.json</code>类似于<code>requirements.txt</code>。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-id="cklahh5zy0004xysm1zq66my8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-id="cklaimama00040gjh3312c41z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
@@ -617,7 +411,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/27/hello-world/" data-id="cklahh5zu0001xysm1qw79cf2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/27/hello-world/" data-id="cklaimam700010gjh30yw15lf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/" rel="tag">misc</a></li></ul>
