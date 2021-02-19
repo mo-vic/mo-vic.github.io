@@ -7,16 +7,16 @@
   
   <title>hexo维护和使用笔记 | movic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[toc]    Hexo个人博客小站维护和使用笔记 一、 Hexo的安装 二、建站 三、配置 四、写作 4.1 新建文章 4.2 Front-matter 4.3 标签插件 4.4 文章资源文件夹 4.5 写作流程   五、插件 六、部署 七、npm    Hexo个人博客小站维护和使用笔记才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发了。今天重新回忆">
+  <meta name="description" content="[toc]    Hexo个人博客小站维护和使用笔记 一、 Hexo的安装 二、建站 三、配置 四、写作 4.1 新建文章 4.2 Front-matter 4.3 标签插件 4.4 文章资源文件夹 4.5 写作流程   五、插件 六、部署 七、npm 八、存在的问题    Hexo个人博客小站维护和使用笔记才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo维护和使用笔记">
 <meta property="og:url" content="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="movic">
-<meta property="og:description" content="[toc]    Hexo个人博客小站维护和使用笔记 一、 Hexo的安装 二、建站 三、配置 四、写作 4.1 新建文章 4.2 Front-matter 4.3 标签插件 4.4 文章资源文件夹 4.5 写作流程   五、插件 六、部署 七、npm    Hexo个人博客小站维护和使用笔记才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发了。今天重新回忆">
+<meta property="og:description" content="[toc]    Hexo个人博客小站维护和使用笔记 一、 Hexo的安装 二、建站 三、配置 四、写作 4.1 新建文章 4.2 Front-matter 4.3 标签插件 4.4 文章资源文件夹 4.5 写作流程   五、插件 六、部署 七、npm 八、存在的问题    Hexo个人博客小站维护和使用笔记才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/banner.jpg">
 <meta property="article:published_time" content="2021-02-16T12:05:31.000Z">
-<meta property="article:modified_time" content="2021-02-18T07:00:33.645Z">
+<meta property="article:modified_time" content="2021-02-19T04:11:25.253Z">
 <meta property="article:author" content="movic">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -226,6 +226,7 @@ mjx-container[display="true"] + br {
 <li><a href="#%E4%BA%94-%E6%8F%92%E4%BB%B6">五、插件</a></li>
 <li><a href="#%E5%85%AD-%E9%83%A8%E7%BD%B2">六、部署</a></li>
 <li><a href="#%E4%B8%83-npm">七、npm</a></li>
+<li><a href="#%E5%85%AB-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98">八、存在的问题</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -305,11 +306,15 @@ mjx-container[display="true"] + br {
 </li>
 </ol>
 <h2><span id="七-npm">七、npm</span></h2><p><code>package.json</code>类似于<code>requirements.txt</code>。</p>
+<h2><span id="八-存在的问题">八、存在的问题</span></h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>不能渲染双等号==高亮==语法；</li>
+<li><code>Typora</code>的内部链接可能存在bug，如：跳转至<a href="#%E4%BA%94%E3%80%81%E6%8F%92%E4%BB%B6">五、插件</a>，在<code>Typora</code>中跳转到了<a href="#%E5%85%AD%E3%80%81%E9%83%A8%E7%BD%B2">六、部署</a>。实际上不管跳转目标怎么写，似乎都会跳转到<a href="#%E5%85%AD%E3%80%81%E9%83%A8%E7%BD%B2">六、部署</a>。其次，<code>Hexo</code>在生成目录时，标题中的中文顿号<code>、</code>会被转换成<code>-</code>，大写字母会被转换成小写字母，因此当标题中不存在中文顿号和大写字母时，内部链接才能同时在<code>Hexo</code>和<code>Typora</code>中生效。</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-id="cklaimama00040gjh3312c41z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-id="cklbs0n9f000410rx5jiddvgt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
