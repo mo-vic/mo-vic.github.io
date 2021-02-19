@@ -225,3 +225,7 @@ $ npm install `plugin` --save
 
 
 
+## 八、存在的问题
+
+1. [hexo-renderer-marked](https://github.com/hexojs/hexo-renderer-marked)不能渲染双等号==高亮==语法；
+2. `Typora`的内部链接可能存在bug，如：跳转至[五、插件](#五、插件)，在`Typora`中跳转到了[六、部署](#六、部署)。实际上不管跳转目标怎么写，似乎都会跳转到[六、部署](#六、部署)。其次，`Hexo`在生成目录时，标题中的中文顿号`、`会被转换成`-`，大写字母会被转换成小写字母，因此当标题中不存在中文顿号和大写字母时，内部链接才能同时在`Hexo`和`Typora`中生效。
