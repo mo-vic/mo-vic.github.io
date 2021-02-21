@@ -172,6 +172,10 @@ $ npm install `plugin` --save
 
 
 
+4. [hexo-tag-mmedia](https://github.com/u2sb/hexo-tag-mmedia)：媒体插入插件。
+
+
+
 ## 六、部署
 
 使用`Travis CI`将`Hexo`博客部署到GitHub Pages上：
