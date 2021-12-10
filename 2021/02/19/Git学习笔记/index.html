@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git学习笔记 | movic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[toc]    Git Book Notes Chapter 1 Getting Started 1.1. Three Main States 1.2 First-Time Git Setup 1.2.1 About configuration levels 1.2.2 Setup my identity info 1.2.3 Setup my editor 1.2.4 Setup creden">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git学习笔记">
+<meta property="og:url" content="http://yoursite.com/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="movic">
+<meta property="og:description" content="[toc]    Git Book Notes Chapter 1 Getting Started 1.1. Three Main States 1.2 First-Time Git Setup 1.2.1 About configuration levels 1.2.2 Setup my identity info 1.2.3 Setup my editor 1.2.4 Setup creden">
+<meta property="og:locale">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/areas.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/lifecycle.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/commit-and-tree.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/commits-and-parents.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/branch-and-history.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/two-branches.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/head-to-master.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/head-to-testing.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/advance-testing.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/checkout-master.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/advance-master.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-branching-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-branching-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-branching-3.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-branching-4.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-branching-5.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-branching-6.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-merging-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-merging-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/lr-branches-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/lr-branches-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/topic-branches-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/topic-branches-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/remote-branches-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/remote-branches-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/remote-branches-3.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/remote-branches-4.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/remote-branches-5.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-rebase-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-rebase-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-rebase-3.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/basic-rebase-4.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/interesting-rebase-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/interesting-rebase-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/interesting-rebase-3.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/interesting-rebase-4.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/interesting-rebase-5.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/perils-of-rebasing-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/perils-of-rebasing-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/perils-of-rebasing-3.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/perils-of-rebasing-4.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/perils-of-rebasing-5.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/centralized_workflow.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/integration-manager.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/benevolent-dictator.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/small-team-flow.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/managed-team-flow.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/rebasing-1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/rebasing-2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/reset-squash-r1.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/reset-squash-r2.png">
+<meta property="og:image" content="https://git-scm.com/book/en/v2/images/reset-squash-r3.png">
+<meta property="article:published_time" content="2021-02-19T14:16:53.000Z">
+<meta property="article:modified_time" content="2021-12-10T05:11:15.863Z">
+<meta property="article:author" content="movic">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="代码管理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://git-scm.com/book/en/v2/images/areas.png">
+  
+    <link rel="alternate" href="/atom.xml" title="movic" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">movic</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Git学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2021-02-19T14:16:53.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>►<a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#git-book-notes">Git Book Notes</a><ul>
+<li><a href="#chapter-1-getting-started">Chapter 1 Getting Started</a><ul>
+<li><a href="#11-three-main-states">1.1. Three Main States</a></li>
+<li><a href="#12-first-time-git-setup">1.2 First-Time Git Setup</a><ul>
+<li><a href="#121-about-configuration-levels">1.2.1 About configuration levels</a></li>
+<li><a href="#122-setup-my-identity-info">1.2.2 Setup my identity info</a></li>
+<li><a href="#123-setup-my-editor">1.2.3 Setup my editor</a></li>
+<li><a href="#124-setup-credential-cache">1.2.4 Setup credential cache</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-2-git-basics">Chapter 2 Git Basics</a><ul>
+<li><a href="#21-getting-a-git-repository">2.1 Getting a Git Repository</a><ul>
+<li><a href="#211-initializing-a-repository-in-an-existing-directory">2.1.1 Initializing a repository in an existing directory</a></li>
+<li><a href="#212-clone-an-existing-repository">2.1.2 Clone an existing repository</a></li>
+</ul>
+</li>
+<li><a href="#22-recording-changes-to-the-repository">2.2 Recording Changes to the Repository</a><ul>
+<li><a href="#221-lifecycle-of-the-status-of-the-files">2.2.1 Lifecycle of the status of the files</a></li>
+<li><a href="#222-checking-the-status-of-the-files">2.2.2 Checking the status of the files</a></li>
+<li><a href="#223-staging-modified-files">2.2.3 Staging modified files</a></li>
+<li><a href="#224-ignoring-files">2.2.4 Ignoring files</a></li>
+<li><a href="#225-viewing-the-staged-and-unstaged-changes">2.2.5 Viewing the staged and unstaged changes</a></li>
+<li><a href="#226-committing-your-changes">2.2.6 Committing your changes</a></li>
+<li><a href="#227-skipping-the-staging-area">2.2.7 Skipping the staging area</a></li>
+<li><a href="#228-removing-files">2.2.8 Removing files</a></li>
+<li><a href="#229-moving-files">2.2.9 Moving files</a></li>
+</ul>
+</li>
+<li><a href="#23-viewing-the-commit-history">2.3 Viewing the Commit History</a><ul>
+<li><a href="#231-options-for-formatting-the-log-output">2.3.1 Options for formatting the log output</a></li>
+<li><a href="#232-limiting-log-output">2.3.2 Limiting log output</a></li>
+</ul>
+</li>
+<li><a href="#24-undoing-things">2.4 Undoing Things</a><ul>
+<li><a href="#241-modify-a-commit">2.4.1 Modify a commit</a></li>
+<li><a href="#242-unstaging-a-staged-file">2.4.2 Unstaging a staged file</a></li>
+<li><a href="#243-unmodifying-a-modified-file">2.4.3 Unmodifying a modified file</a></li>
+</ul>
+</li>
+<li><a href="#25-work-with-remotes">2.5 Work with Remotes</a><ul>
+<li><a href="#251-showing-your-remotes">2.5.1 Showing your remotes</a></li>
+<li><a href="#252-adding-remote-repositories">2.5.2 Adding remote repositories</a></li>
+<li><a href="#253-fetching-and-pulling-from-your-remote">2.5.3 Fetching and pulling from your remote</a></li>
+<li><a href="#254-pushing-to-your-remotes">2.5.4 Pushing to your remotes</a></li>
+<li><a href="#255-inspecting-a-remote">2.5.5 Inspecting a remote</a></li>
+<li><a href="#256-renaming-and-removing-remotes">2.5.6 Renaming and removing remotes</a></li>
+</ul>
+</li>
+<li><a href="#26-tagging">2.6 Tagging</a><ul>
+<li><a href="#261-listing-your-tags">2.6.1 Listing your tags</a></li>
+<li><a href="#262-creating-tags">2.6.2 Creating tags</a></li>
+<li><a href="#263-tagging-later">2.6.3 Tagging later</a></li>
+<li><a href="#264-sharing-tags">2.6.4 Sharing tags</a></li>
+<li><a href="#265-deleting-tags">2.6.5 Deleting tags</a></li>
+<li><a href="#266-checking-out-tags">2.6.6 Checking out tags</a></li>
+</ul>
+</li>
+<li><a href="#27-git-aliases">2.7 Git Aliases</a><ul>
+<li><a href="#271-setup-aliases">2.7.1 Setup aliases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-3-git-branching">Chapter 3 Git Branching</a><ul>
+<li><a href="#31-branches-in-a-nutshell">3.1 Branches in a Nutshell</a><ul>
+<li><a href="#311-creating-a-new-branch">3.1.1 Creating a new branch</a></li>
+<li><a href="#312-switch-branches">3.1.2 Switch branches</a></li>
+</ul>
+</li>
+<li><a href="#32-basic-branching-and-merging">3.2 Basic Branching and Merging</a><ul>
+<li><a href="#321-basic-branching-workflow">3.2.1 Basic branching workflow</a></li>
+<li><a href="#322-basic-branching">3.2.2 Basic branching</a></li>
+<li><a href="#323-basic-merging">3.2.3 Basic merging</a></li>
+<li><a href="#324-basic-merge-conflicts">3.2.4 Basic merge conflicts</a></li>
+</ul>
+</li>
+<li><a href="#33-branch-management">3.3 Branch Management</a></li>
+<li><a href="#34-branching-workflows">3.4 Branching Workflows</a><ul>
+<li><a href="#341-long-running-branches">3.4.1 Long-Running branches</a></li>
+<li><a href="#342-topic-branches">3.4.2 Topic branches</a></li>
+</ul>
+</li>
+<li><a href="#35-remote-branches">3.5 Remote Branches</a><ul>
+<li><a href="#351-fetching">3.5.1 Fetching</a></li>
+<li><a href="#352-pushing">3.5.2 Pushing</a></li>
+<li><a href="#353-tracking-branches">3.5.3 Tracking branches</a></li>
+<li><a href="#354-pulling">3.5.4 Pulling</a></li>
+<li><a href="#355-deleting-remote-branches">3.5.5 Deleting remote branches</a></li>
+</ul>
+</li>
+<li><a href="#36-rebasing">3.6 Rebasing</a><ul>
+<li><a href="#361-the-basic-rebase">3.6.1 The basic rebase</a></li>
+<li><a href="#362-more-interesting-rebases">3.6.2 More interesting rebases</a></li>
+<li><a href="#363-the-perils-of-rebasing">3.6.3 The perils of rebasing</a></li>
+<li><a href="#364-rebase-when-you-rebase">3.6.4 Rebase when you rebase</a></li>
+<li><a href="#365-rebase-vs-merge">3.6.5 Rebase vs. Merge</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-5-distributed-git">Chapter 5 Distributed Git</a><ul>
+<li><a href="#51-distributed-workflows">5.1 Distributed Workflows</a><ul>
+<li><a href="#511-centralized-workflow">5.1.1 Centralized workflow</a></li>
+<li><a href="#512-integration-manager-workflow">5.1.2 Integration-Manager workflow</a></li>
+<li><a href="#513-dictator-and-lieutenants-workflow">5.1.3 Dictator and Lieutenants workflow</a></li>
+</ul>
+</li>
+<li><a href="#52-contributing-to-a-project">5.2 Contributing to a Project</a><ul>
+<li><a href="#521-commit-guidelines">5.2.1 Commit guidelines</a></li>
+<li><a href="#522-private-small-team">5.2.2 Private small team</a></li>
+<li><a href="#523-private-managed-team">5.2.3 Private managed team</a></li>
+<li><a href="#524-forked-public-project">5.2.4 Forked public project</a></li>
+</ul>
+</li>
+<li><a href="#53-maintaining-a-project">5.3 Maintaining a Project</a><ul>
+<li><a href="#531-checking-out-remote-branches">5.3.1 Checking out remote branches</a></li>
+<li><a href="#532-determining-what-is-introduced">5.3.2 Determining what is introduced</a></li>
+<li><a href="#533-integrating-contributed-work">5.3.3 Integrating contributed work</a><ul>
+<li><a href="#5331-merging-workflows">5.3.3.1 merging workflows</a></li>
+<li><a href="#5332-large-merge-workflows">5.3.3.2 large-merge workflows</a></li>
+<li><a href="#5333-rebasing-and-cherry-picking-workflows">5.3.3.3 rebasing and Cherry-Picking workflows</a></li>
+</ul>
+</li>
+<li><a href="#534-rerere">5.3.4 Rerere</a></li>
+<li><a href="#535-tagging-your-releases">5.3.5 Tagging your releases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-6-github">Chapter 6 GitHub</a><ul>
+<li><a href="#61-contributing-to-a-project">6.1 Contributing to a Project</a><ul>
+<li><a href="#611-the-github-flow">6.1.1 The GitHub flow</a></li>
+<li><a href="#612-advanced-pull-requests">6.1.2 Advanced pull requests</a></li>
+</ul>
+</li>
+<li><a href="#613-keep-your-github-public-repository-up-to-date">6.1.3 Keep your GitHub public repository up-to-date</a></li>
+<li><a href="#63-maintaining-a-project">6.3 Maintaining a Project</a><ul>
+<li><a href="#631-managing-pull-requests">6.3.1 Managing pull requests</a></li>
+<li><a href="#632-pull-requests-on-pull-requests">6.3.2 Pull requests on pull requests</a></li>
+<li><a href="#633-contributing">6.3.3 Contributing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#chapter-7-git-tools">Chapter 7 Git Tools</a><ul>
+<li><a href="#71-revision-selection">7.1 Revision Selection</a></li>
+<li><a href="#72-interactive-staging">7.2 Interactive Staging</a></li>
+<li><a href="#73-stashing-and-cleaning">7.3 Stashing and Cleaning</a><ul>
+<li><a href="#731-stashing">7.3.1 Stashing</a></li>
+<li><a href="#732-cleaning">7.3.2 Cleaning</a></li>
+</ul>
+</li>
+<li><a href="#75-searching">7.5 Searching</a></li>
+<li><a href="#76-rewriting-history">7.6 Rewriting History</a></li>
+<li><a href="#77-reset-demystify">7.7 Reset Demystify</a><ul>
+<li><a href="#771-the-role-of-reset">7.7.1 The role of reset</a></li>
+<li><a href="#772-reset-with-a-path">7.7.2 Reset with a path</a></li>
+<li><a href="#773-squashing">7.7.3 Squashing</a></li>
+<li><a href="#774-check-it-out">7.7.4 Check it out</a></li>
+<li><a href="#775-cheat-sheet">7.7.5 Cheat-sheet</a></li>
+</ul>
+</li>
+<li><a href="#78-advance-merging">7.8 Advance Merging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="git-book-notes">Git Book Notes</span></h1><p>Link to the book: <a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a></p>
+<h2><span id="chapter-1-getting-started">Chapter 1 Getting Started</span></h2><h3><span id="11-three-main-states">1.1. Three Main States</span></h3><ul>
+<li>==committed==–means that the data is safely stored in your local database.</li>
+<li>==modified==–means that you have changed the file but have not committed it to your database yet.</li>
+<li>==staged==–means that you have marked a modified file in its current version to go into your next commit snapshot.</li>
+</ul>
+<p><img src="https://git-scm.com/book/en/v2/images/areas.png" alt="Working tree, staging area, and Git directory."></p>
+<p>The basic Git workflow goes something like this:</p>
+<ol>
+<li>You modify files in your working tree.</li>
+<li>You selectively stage just those changes you want to be part of your next commit, which adds <em>only</em> those changes to the staging area.</li>
+<li>You do a commit, which takes the files as they are in the staging area and stores that snapshot permanently to your Git directory.</li>
+</ol>
+<p>If a particular version of a file is in the Git directory, it’s considered <em>committed</em>. If it has been modified and was added to the staging area, it is <em>staged</em>. And if it was changed since it was checked out but has not been staged, it is <em>modified</em>. </p>
+<a id="more"></a>
+
+
+
+<h3><span id="12-first-time-git-setup">1.2 First-Time Git Setup</span></h3><h4><span id="121-about-configuration-levels">1.2.1 About configuration levels</span></h4><p><code>git config</code> tool can set/==get== configuration variables.</p>
+<p>Variables can be stored in three different places:</p>
+<ol>
+<li>==<code>/etc/gitconfig</code>== file: Contains values applied to every user on the system and all their repositories. If you pass the option <code>--system</code> to <code>git config</code>, it reads and writes from this file specifically. (Because this is a system configuration file, you would need administrative or superuser privilege to make changes to it.)</li>
+<li>==<code>~/.gitconfig</code>== or ==<code>~/.config/git/config</code>== file. Values specific personally to you, the user. You can make Git read and write to this file specifically by passing the <code>--global</code> option, and this affects <em>all</em> of the repositories you work with on your system.</li>
+<li>==<code>config</code>== file in the Git directory (that is, <code>.git/config</code>) of whatever repository you’re currently using: Specific to that single repository. You can force Git to read from and write to this file with the <code>--local</code> option, but that is in fact the default. (Unsurprisingly, you need to be located somewhere in a Git repository for this option to work properly.) </li>
+</ol>
+<p>To be summarized:</p>
+<ul>
+<li>==system level==</li>
+<li>==user level==</li>
+<li>==directory level==</li>
+</ul>
+<p>To view all of the settings and where they are coming from, using:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list --show-origin</span><br></pre></td></tr></table></figure>
+<h4><span id="122-setup-my-identity-info">1.2.2 Setup my identity info</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;movic&quot;</span><br><span class="line">git config --global user.email xxxxx.xxxx@xxxx.com</span><br></pre></td></tr></table></figure>
+<h4><span id="123-setup-my-editor">1.2.3 Setup my editor</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.editor vim</span><br><span class="line"><span class="meta">#</span><span class="bash"> On a Windows system, <span class="keyword">if</span> you want to use a different text editor, you must specify the full path to its executable file</span></span><br></pre></td></tr></table></figure>
+<h4><span id="124-setup-credential-cache">1.2.4 Setup credential cache</span></h4><p>If you don’t want to type the password every single time you push, you can set up a “credential cache”. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> In Git Book</span></span><br><span class="line">git config --global credential.helper cahche</span><br><span class="line"><span class="meta">#</span><span class="bash"> But I found</span></span><br><span class="line">git config --global credential.helper manager</span><br></pre></td></tr></table></figure>
+<h2><span id="chapter-2-git-basics">Chapter 2 Git Basics</span></h2><h3><span id="21-getting-a-git-repository">2.1 Getting a Git Repository</span></h3><h4><span id="211-initializing-a-repository-in-an-existing-directory">2.1.1 Initializing a repository in an existing directory</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>then add file to be tracked by:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> it’s a directory, the <span class="built_in">command</span> adds all the files <span class="keyword">in</span> that directory recursively</span></span><br><span class="line">git add LICENSE</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git add *.py</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">then</span></span></span><br><span class="line">git commit -m &quot;message of the commit.&quot;</span><br></pre></td></tr></table></figure>
+<h4><span id="212-clone-an-existing-repository">2.1.2 Clone an existing repository</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/**/* [my_working_directory(optional)]</span><br></pre></td></tr></table></figure>
+<h3><span id="22-recording-changes-to-the-repository">2.2 Recording Changes to the Repository</span></h3><h4><span id="221-lifecycle-of-the-status-of-the-files">2.2.1 Lifecycle of the status of the files</span></h4><p><img src="https://git-scm.com/book/en/v2/images/lifecycle.png" alt="The lifecycle of the status of your files."></p>
+<h4><span id="222-checking-the-status-of-the-files">2.2.2 Checking the status of the files</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># for short status</span></span></span><br><span class="line">git status -s</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git status --short</span><br></pre></td></tr></table></figure>
+<p>==??== stands for untracked file, ==A== stands for added file, ==” M”== stands for modified but not yet staged file, ==”M “== stands for modified and staged file, and ==MM== stands for modified, staged file, and then modified again.</p>
+<h4><span id="223-staging-modified-files">2.2.3 Staging modified files</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> `git add` is a multipurpose <span class="built_in">command</span>, it can be used to stage files as well</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> staging your files</span></span><br><span class="line">git add *.py</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> you already staged a file and <span class="keyword">then</span> change it again, you need to stage your latest version of your file, specifically use the `git add` <span class="built_in">command</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> anyway `git add` is all you need</span></span><br></pre></td></tr></table></figure>
+<h4><span id="224-ignoring-files">2.2.4 Ignoring files</span></h4><p>The rules for the patterns you can put in the <code>.gitignore</code> file are as follows:</p>
+<ul>
+<li>Blank lines or lines starting with <code>#</code> are ignored.</li>
+<li>Standard glob patterns work, and will be applied recursively throughout the entire working tree.</li>
+<li>You can start patterns with a forward slash (<code>/</code>) to avoid recursivity.</li>
+<li>You can end patterns with a forward slash (<code>/</code>) to specify a directory.</li>
+<li>You can negate a pattern by starting it with an exclamation point (<code>!</code>).</li>
+</ul>
+<p>Glob patterns are like simplified regular expressions that shells use. An asterisk (<code>*</code>) matches zero or more characters; <code>[abc]</code> matches any character inside the brackets (in this case a, b, or c); a question mark (<code>?</code>) matches a single character; and brackets enclosing characters separated by a hyphen (<code>[0-9]</code>) matches any character between them (in this case 0 through 9). You can also use two asterisks to match nested directories; <code>a/**/z</code> would match <code>a/z</code>, <code>a/b/z</code>, <code>a/b/c/z</code>, and so on.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ignore all .a files</span></span><br><span class="line">*.a</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> but <span class="keyword">do</span> track lib.a, even though you<span class="string">&#x27;re ignoring .a files above</span></span></span><br><span class="line">!lib.a</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> only ignore the TODO file <span class="keyword">in</span> the current directory, not subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ignore all files <span class="keyword">in</span> any directory named build</span></span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ignore doc/notes.txt, but not doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ignore all .pdf files <span class="keyword">in</span> the doc/ directory and any of its subdirectories</span></span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure>
+<p>Tip: <a target="_blank" rel="noopener" href="https://github.com/github/gitignore">Examples</a> of <code>.gitignore</code> file.</p>
+<h4><span id="225-viewing-the-staged-and-unstaged-changes">2.2.5 Viewing the staged and unstaged changes</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> the below <span class="built_in">command</span> compares what is <span class="keyword">in</span> your working directory with what is <span class="keyword">in</span> your staging area. The result tells you the changes you’ve made that you haven’t yet staged</span></span><br><span class="line">git diff</span><br><span class="line"><span class="meta">#</span><span class="bash"> to see what you’ve staged that will go into your next commit</span></span><br><span class="line">git diff --staged</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git diff --cached</span><br></pre></td></tr></table></figure>
+<h4><span id="226-committing-your-changes">2.2.6 Committing your changes</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m message -v</span><br></pre></td></tr></table></figure>
+<h4><span id="227-skipping-the-staging-area">2.2.7 Skipping the staging area</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> adding -a option to the `git commit` <span class="built_in">command</span> will automatically add the tracked files to the staged area</span></span><br><span class="line">git commit -a</span><br></pre></td></tr></table></figure>
+<h4><span id="228-removing-files">2.2.8 Removing files</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> to remove a file from Git, use `git rm` <span class="built_in">command</span>. This <span class="built_in">command</span> will remove the file from working directory as well</span></span><br><span class="line">git rm *.py</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># also you can remove the file from the working directory followed by the `git rm` command</span></span></span><br><span class="line">rm *.py</span><br><span class="line">git rm *.py</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> you want to keep the file <span class="keyword">in</span> your working tree but remove it from your staging area, use `--cached` option</span></span><br><span class="line">git rm --cached *.py</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> you modified the file or had already added it to the staging area, you must force the removal with the -f option. This is a safety feature to prevent accidental removal of data that hasn’t yet been recorded <span class="keyword">in</span> a snapshot and that can’t be recovered from Git</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> we can also use glob pattern, note the backslash (\) <span class="keyword">in</span> front of the *. This is necessary because Git does its own filename expansion <span class="keyword">in</span> addition to your shell’s filename expansion</span></span><br><span class="line">git rm log/\*.log</span><br></pre></td></tr></table></figure>
+<h4><span id="229-moving-files">2.2.9 Moving files</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git mv a.py b.py</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">mv a.py b.py</span><br><span class="line">git rm a.py</span><br><span class="line">git add b.py</span><br></pre></td></tr></table></figure>
+<h3><span id="23-viewing-the-commit-history">2.3 Viewing the Commit History</span></h3><h4><span id="231-options-for-formatting-the-log-output">2.3.1 Options for formatting the log output</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">git log</span><br><span class="line"><span class="meta">#</span><span class="bash"> or with diff info, use `git <span class="built_in">log</span> -p` or `git <span class="built_in">log</span> --patch` followed by optional a `-number`, <span class="keyword">for</span> example: -2</span></span><br><span class="line">git log -p -2</span><br><span class="line"><span class="meta">#</span><span class="bash"> to <span class="built_in">print</span> out summary of the commit or say, the statistics of the commit, use `--<span class="built_in">stat</span>` option</span></span><br><span class="line">git log --stat</span><br><span class="line"><span class="meta">#</span><span class="bash"> to format the <span class="built_in">log</span> output, use `--pretty` option, A few prebuilt options are available</span></span><br><span class="line">git log --pretty=oneline  # prints each commit on a single line</span><br><span class="line">git log --pretty=short  # ignore the date</span><br><span class="line">git log --pretty=full # show committer info compared with `short`</span><br><span class="line">git log --pretty=fuller # show date info compared with `full`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> The `first..latter` syntax is a <span class="built_in">log</span> filter that asks Git to display only those commits that are on the `latter` branch that are not on the `first` branch</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> use `--no-merges` to prevent the display of merge commits</span></span><br><span class="line">git log --no-merges first..latter</span><br></pre></td></tr></table></figure>
+<p>Customized log output —— ==<code>format</code>==, the <code>oneline</code> option and <code>format</code> option are particularly useful with another option called <code>--graph</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=format:&quot;%h - % an&quot; --graph</span><br></pre></td></tr></table></figure>
+<p>Useful options for <code>git log --pretty=format</code>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="center">Description of Output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>%H</code></td>
+<td align="center">Commit hash</td>
+</tr>
+<tr>
+<td align="center"><code>%h</code></td>
+<td align="center">Abbreviated commit hash</td>
+</tr>
+<tr>
+<td align="center"><code>%T</code></td>
+<td align="center">Tree hash</td>
+</tr>
+<tr>
+<td align="center"><code>%t</code></td>
+<td align="center">Abbreviated tree hash</td>
+</tr>
+<tr>
+<td align="center"><code>%P</code></td>
+<td align="center">Parent hashes</td>
+</tr>
+<tr>
+<td align="center"><code>%p</code></td>
+<td align="center">Abbreviated parent hashes</td>
+</tr>
+<tr>
+<td align="center"><code>%an</code></td>
+<td align="center">Author name</td>
+</tr>
+<tr>
+<td align="center"><code>%ae</code></td>
+<td align="center">Author email</td>
+</tr>
+<tr>
+<td align="center"><code>%ad</code></td>
+<td align="center">Author date (format respects the <code>--date=option</code>)</td>
+</tr>
+<tr>
+<td align="center"><code>%ar</code></td>
+<td align="center">Author date, relative</td>
+</tr>
+<tr>
+<td align="center"><code>%cn</code></td>
+<td align="center">Committer name</td>
+</tr>
+<tr>
+<td align="center"><code>%ce</code></td>
+<td align="center">Committer email</td>
+</tr>
+<tr>
+<td align="center"><code>%cd</code></td>
+<td align="center">Committer date</td>
+</tr>
+<tr>
+<td align="center"><code>%cr</code></td>
+<td align="center">Committer date, relative</td>
+</tr>
+<tr>
+<td align="center"><code>%s</code></td>
+<td align="center">Subject</td>
+</tr>
+</tbody></table>
+<p>A few common options listed below:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>-p</code></td>
+<td align="center">Show the patch introduced with each commit.</td>
+</tr>
+<tr>
+<td align="center"><code>--stat</code></td>
+<td align="center">Show statistics for files modified in each commit.</td>
+</tr>
+<tr>
+<td align="center"><code>--shortstat</code></td>
+<td align="center">Display only the changed/insertions/deletions line from the –stat command.</td>
+</tr>
+<tr>
+<td align="center"><code>--name-only</code></td>
+<td align="center">Show the list of files modified after the commit information.</td>
+</tr>
+<tr>
+<td align="center"><code>--name-status</code></td>
+<td align="center">Show the list of files affected with added/modified/deleted information as well.</td>
+</tr>
+<tr>
+<td align="center"><code>--abbrev-commit</code></td>
+<td align="center">Show only the first few characters of the SHA-1 checksum instead of all 40.</td>
+</tr>
+<tr>
+<td align="center"><code>--relative-date</code></td>
+<td align="center">Display the date in a relative format (for example, “2 weeks ago”) instead of using the full date format.</td>
+</tr>
+<tr>
+<td align="center"><code>--graph</code></td>
+<td align="center">Display an ASCII graph of the branch and merge history beside the log output.</td>
+</tr>
+<tr>
+<td align="center"><code>--pretty</code></td>
+<td align="center">Show commits in an alternate format. Options include <code>oneline</code>, <code>short</code>, <code>full</code>, <code>fuller</code>, and <code>format</code> (where you specify your own format).</td>
+</tr>
+<tr>
+<td align="center"><code>--oneline</code></td>
+<td align="center">Shorthand for <code>--pretty=oneline --abbrev-commit</code> used together.</td>
+</tr>
+</tbody></table>
+<h4><span id="232-limiting-log-output">2.3.2 Limiting log output</span></h4><ul>
+<li>==Time filter==</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> gets the list of commits made <span class="keyword">in</span> last two weeks:</span></span><br><span class="line">git log --since=2.weeks</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git log --since=&quot;2019-06-01&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git log --since=&quot;2 years 1 day 3 minutes ago&quot;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> until option</span></span><br><span class="line">git log --until=&quot;now&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==Author filter==</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --author=&quot;movic&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==Message filter==</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> list out the commits that match the `keywords` <span class="keyword">in</span> the message</span></span><br><span class="line">git log --grep &quot;version&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> to <span class="built_in">limit</span> the ouput to match all --grep patterns, use `--all-match` option</span></span><br><span class="line">git log --grep &quot;version&quot; --grep &quot;2&quot; --all-match</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==Changes filter==</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> this only list out the commits <span class="built_in">which</span> add or remove the `keywords`</span></span><br><span class="line">git log -S &quot;hello world&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==Path filter==</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">limit</span> <span class="built_in">log</span> output to commits that introduced a change to the specified files</span></span><br><span class="line">git log -- models/</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git log -- main.py</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th align="center">Option</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>-&lt;n&gt;</code></td>
+<td align="center">Show only the last n commits</td>
+</tr>
+<tr>
+<td align="center"><code>--since</code>, <code>--after</code></td>
+<td align="center">Limit the commits to those made after the specified date.</td>
+</tr>
+<tr>
+<td align="center"><code>--until</code>, <code>--before</code></td>
+<td align="center">Limit the commits to those made before the specified date.</td>
+</tr>
+<tr>
+<td align="center"><code>--author</code></td>
+<td align="center">Only show commits in which the author entry matches the specified string.</td>
+</tr>
+<tr>
+<td align="center"><code>--committer</code></td>
+<td align="center">Only show commits in which the committer entry matches the specified string.</td>
+</tr>
+<tr>
+<td align="center"><code>--grep</code></td>
+<td align="center">Only show commits with a commit message containing the string</td>
+</tr>
+<tr>
+<td align="center"><code>-S</code></td>
+<td align="center">Only show commits adding or removing code matching the string</td>
+</tr>
+</tbody></table>
+<h3><span id="24-undoing-things">2.4 Undoing Things</span></h3><h4><span id="241-modify-a-commit">2.4.1 Modify a commit</span></h4><ul>
+<li>Change the commit message</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend -m &quot;message&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Add the forgotten file to the commit as well as change the commit message</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">  the second commit replaces the results of the first</span></span><br><span class="line">git commit -m &quot;initial commit&quot;</span><br><span class="line">git add forgotten_file</span><br><span class="line">git commit --amend -m &quot;correct commit&quot;</span><br></pre></td></tr></table></figure>
+<h4><span id="242-unstaging-a-staged-file">2.4.2 Unstaging a staged file</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> the file <span class="keyword">in</span> the working directory is not touched</span></span><br><span class="line">git reset HEAD -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<h4><span id="243-unmodifying-a-modified-file">2.4.3 Unmodifying a modified file</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> revert the file from last commit. Be careful, your modification will disappear</span></span><br><span class="line">git checkout &lt;file&gt;</span><br></pre></td></tr></table></figure>
+<h3><span id="25-work-with-remotes">2.5 Work with Remotes</span></h3><h4><span id="251-showing-your-remotes">2.5.1 Showing your remotes</span></h4><p>To see which remote servers you have configured, run <code>git remote</code> command. The name <code>origin</code> is the default name Git gives to the server you cloned from.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote</span><br><span class="line"><span class="meta">#</span><span class="bash"> to show URLs</span></span><br><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+<h4><span id="252-adding-remote-repositories">2.5.2 Adding remote repositories</span></h4><p>To add a new remote Git repository as a shortname you can reference easily, run <code>git remote add &lt;shortname&gt; &lt;url&gt;</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/xxxxx/xxxxxx.git</span><br></pre></td></tr></table></figure>
+<h4><span id="253-fetching-and-pulling-from-your-remote">2.5.3 Fetching and pulling from your remote</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> use `git fetch &lt;remote&gt;` to pull down all the data from that remote project, this doesn’t automatically merge it with any of your work or modify what you’re currently working on. You have to merge it manually into your work when you’re ready</span></span><br><span class="line">git fetch origin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> use `git pull &lt;remote&gt;` to automatically fetch and <span class="keyword">then</span> merge that remote branch into your current branch</span></span><br><span class="line">git pull origin</span><br></pre></td></tr></table></figure>
+<h4><span id="254-pushing-to-your-remotes">2.5.4 Pushing to your remotes</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> back up to the server</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<h4><span id="255-inspecting-a-remote">2.5.5 Inspecting a remote</span></h4><p>Use the <code>git remote show &lt;remote&gt;</code> command to show more information about a particular remote.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote show origin</span><br></pre></td></tr></table></figure>
+<h4><span id="256-renaming-and-removing-remotes">2.5.6 Renaming and removing remotes</span></h4><p>Run <code>git remote rename</code> to change a remote’s shortname. This changes all your remote-tracking branch names too. Run <code>git remote remove</code> or <code>git remote rm</code> to remove a shortname.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> rename</span></span><br><span class="line">git remote rename origin my_remote</span><br><span class="line"><span class="meta">#</span><span class="bash"> remove</span></span><br><span class="line">git remote remove origin</span><br></pre></td></tr></table></figure>
+<h3><span id="26-tagging">2.6 Tagging</span></h3><h4><span id="261-listing-your-tags">2.6.1 Listing your tags</span></h4><p>Just type <code>git tag</code> (with optional <code>-l</code> or <code>--list</code>)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br><span class="line"><span class="meta">#</span><span class="bash"> to search <span class="keyword">for</span> tags that match a particular pattern, `-l` or `--list` is mandatory</span></span><br><span class="line">git tag -l &quot;v1.8.5*&quot;</span><br></pre></td></tr></table></figure>
+<h4><span id="262-creating-tags">2.6.2 Creating tags</span></h4><ul>
+<li>==lightweight tag== – a pointer to a specific commit</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> to create a lightweight tag, don<span class="string">&#x27;t supply any of the `-a`, `-s` or `-m` options, just provide a tag name</span></span></span><br><span class="line">git tag v2.0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==annotated tag== – full object in the Git database</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> specify `-a` to create a annotated tag</span></span><br><span class="line">git tag -a v2.0 -m &quot;version 2.0&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> show the tagger infomation</span></span><br><span class="line">git show v2.0</span><br></pre></td></tr></table></figure>
+<h4><span id="263-tagging-later">2.6.3 Tagging later</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> specify the commit checksum(or part of it) at the end of the <span class="built_in">command</span> to create a tag <span class="keyword">for</span> the past commit</span></span><br><span class="line">git tag -a v2.0 9fceb02</span><br></pre></td></tr></table></figure>
+<h4><span id="264-sharing-tags">2.6.4 Sharing tags</span></h4><p>By default, the <code>git push</code> command doesn’t transfer tags to the remote servers. Explicitly push tags to a shared server by running <code>git push origin &lt;tagname&gt;</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git push origin v2.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> to transfer all the tags, use `--tags` option</span></span><br><span class="line">git push origin --tags</span><br><span class="line"><span class="meta">#</span><span class="bash"> when someone <span class="keyword">else</span> clones or pulls from your repository now, they will get all your tags as well</span></span><br></pre></td></tr></table></figure>
+<h4><span id="265-deleting-tags">2.6.5 Deleting tags</span></h4><p>Use <code>git tag -d &lt;tagname&gt;</code> to delete a tag on your local repository.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> note that this does not remove the tag from any remote servers</span></span><br><span class="line">git tag -d v2.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> to delete a tag from a remote server, use `git push &lt;remote&gt; :refs/tags/&lt;tagname&gt;`</span></span><br><span class="line">git push origin :refs/tags/v2.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git push origin --delete v2.0</span><br></pre></td></tr></table></figure>
+<h4><span id="266-checking-out-tags">2.6.6 Checking out tags</span></h4><p>This puts your repository in ==detached HEAD== state, which has some ==ill side effects==.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout v2.0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>In “detached HEAD” state, if you make changes and then create a commit, the tag will stay the same, but your new commit won’t belong to any branch and will be unreachable, except by the exact commit hash. Thus, if you need to make changes — say you’re fixing a bug on an older version, for instance — you will generally want to create a branch:</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b version2 v2.0.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> you <span class="keyword">do</span> this and make a commit, your `version2` branch will be slightly different than the `v2.0.0` tag since it will move forward with your new changes, so <span class="keyword">do</span> be careful</span></span><br></pre></td></tr></table></figure>
+<h3><span id="27-git-aliases">2.7 Git Aliases</span></h3><h4><span id="271-setup-aliases">2.7.1 Setup aliases</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.co checkout</span><br><span class="line">git config --global alias.br branch</span><br><span class="line">git config --global alias.unstage &#x27;reset HEAD --&#x27;</span><br><span class="line">git config --global alias.last &#x27;log -1 HEAD&#x27;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> incorporate with external <span class="built_in">command</span></span></span><br><span class="line">git config --global alias.imshow &#x27;!display&#x27;</span><br></pre></td></tr></table></figure>
+<h2><span id="chapter-3-git-branching">Chapter 3 Git Branching</span></h2><h3><span id="31-branches-in-a-nutshell">3.1 Branches in a Nutshell</span></h3><p>When you make a commit, Git stores a commit object that contains a ==pointer== to the snapshot of the content you staged. This object also contains the ==metadata==, including the author’s name and email address, the message and pointers to the commit or commits that directly came before this commit (its parent or parents): zero parents for the initial commit, one for a normal commit, and multiple for a commit that results from a merge of two or more branches. </p>
+<p>Some objects after a commit:</p>
+<ol>
+<li><em>blobs</em></li>
+<li><em>tree</em></li>
+<li><em>commit</em></li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/commit-and-tree.png" alt="A commit and its tree."></p>
+<p><img src="https://git-scm.com/book/en/v2/images/commits-and-parents.png" alt="Commits and their parents."></p>
+<h4><span id="311-creating-a-new-branch">3.1.1 Creating a new branch</span></h4><p>Use <code>git branch</code> command to create a new branch.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch testing</span><br><span class="line"><span class="meta">#</span><span class="bash"> this creates a new pointer to the same commit you<span class="string">&#x27;re currently on</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/branch-and-history.png" alt="A branch and its commit history."></p>
+<p><img src="https://git-scm.com/book/en/v2/images/two-branches.png" alt="Two branches pointing into the same series of commits."></p>
+<p><code>HEAD</code> is a special pointer, which points to the current commit. The <code>git branch</code> command only created a new branch – it didn’t switch to that branch. To checkout a branch at the same time, run <code>git checkout -b &lt;newbranchname&gt;</code> command</p>
+<p><img src="https://git-scm.com/book/en/v2/images/head-to-master.png" alt="HEAD pointing to a branch."></p>
+<p>Run <code>git log --decorate</code> to show the pointed commit of <code>HEAD</code> pointer </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --decorate</span><br></pre></td></tr></table></figure>
+<h4><span id="312-switch-branches">3.1.2 Switch branches</span></h4><p>Run <code>git checkout</code> to switch to a existing branch.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout testing</span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/head-to-testing.png" alt="HEAD points to the current branch."></p>
+<p>If we make a new commit on the <code>testing</code> branch, then the <code>testing</code> branch will move forward.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/advance-testing.png" alt="The HEAD branch moves forward when a commit is made."></p>
+<p>And run <code>git checkout master</code> to switch back.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/checkout-master.png" alt="HEAD moves when you checkout."></p>
+<p>Now if you make a new commit on the master branch.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/advance-master.png" alt="Divergent history."></p>
+<p>Use <code>git log --all</code> to print out ==all== the commits</p>
+<h3><span id="32-basic-branching-and-merging">3.2 Basic Branching and Merging</span></h3><h4><span id="321-basic-branching-workflow">3.2.1 Basic branching workflow</span></h4><ol>
+<li>Do some work on a website</li>
+<li>Create a branch for a new user story you’re working on</li>
+<li>Do some work in that branch</li>
+</ol>
+<p>At this stage, you’ll receive a call that another issue is critical and you need a hotfix. You’ll do the following:</p>
+<ol>
+<li>Switch to your production branch</li>
+<li>Create a branch to add the hotfix</li>
+<li>After it’s tested, merge the hotfix branch, and push to production</li>
+<li>Switch back to your original user story and continue working</li>
+</ol>
+<h4><span id="322-basic-branching">3.2.2 Basic branching</span></h4><ol>
+<li>current state</li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" alt="A simple commit history."></p>
+<ol start="2">
+<li>create a <code>iss53</code> branch</li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-2.png" alt="Creating a new branch pointer."></p>
+<ol start="3">
+<li>make a new commit on branch <code>iss53</code></li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-3.png" alt="The `iss53` branch has moved forward with your work."></p>
+<ol start="4">
+<li>switch back to your <code>master</code> branch, and create a hotfix branch to fix the bug</li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-4.png" alt="Hotfix branch based on `master`."></p>
+<ol start="5">
+<li>run some tests on branch <code>hotfix</code>, and use <code>git merge</code> command to merge branch <code>hotfix</code> to the master branch when you’re ready</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge hotfix</span><br><span class="line"><span class="meta">#</span><span class="bash"> when you try to merge one commit with a commit that can be reached by following the first commit<span class="string">&#x27;s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together, this is called a &quot;fast-forward&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-5.png" alt="`master` is fast-forwarded to `hotfix`."></p>
+<ol start="6">
+<li>run <code>git branch -d &lt;branchname&gt;</code> to delete the hotfix branch</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git branch -d hotfix</span><br><span class="line"><span class="meta">#</span><span class="bash"> use `git branch -D` <span class="built_in">command</span> to force delete a not merged branch</span></span><br><span class="line">git branch -D hotfix</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>back to your original work, the ==work-in-progress== branch<code>iss53</code></li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-branching-6.png" alt="Work continues on `iss53`."></p>
+<h4><span id="323-basic-merging">3.2.3 Basic merging</span></h4><p>All you have to do is check out the branch you wish to merge into and then run <code>git merge &lt;branchname&gt;</code> command.</p>
+<p>Now if you are ready to merge you <code>iss53</code> branch to the <code>master</code> branch, you’ll have some subtlety.  If the commit on the branch you’re on isn’t a direct ancestor of the branch you’re merging in,  Git will do a ==three-way== merge. In this case, Git will use the snapshots pointed to by the branch tips (here, master and iss53) and the common ancestor of the two. Git creates a new snapshot that results from the branch tips and the ancestor, and automatically creates a new commit, which is called a ==merge commit==.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-merging-1.png" alt="Three snapshots used in a typical merge."></p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-merging-2.png" alt="A merge commit."></p>
+<h4><span id="324-basic-merge-conflicts">3.2.4 Basic merge conflicts</span></h4><p>If you changed the same part of the same file differently in the two branches you’re merging, you’ll get a merge conflict.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> To see the unmerged file, run `git status` <span class="built_in">command</span></span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Open the unmerged file, and select the section of either the HEAD branch or the branch you<span class="string">&#x27;re merging</span></span></span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;</span><br><span class="line">=======</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line"> please contact us at support@github.com</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Suppose you choose the iss53</span></span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line">please contact us at email.support@github.com</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Run `git add` on each file to mark it as resolved</span></span><br><span class="line">git add index.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Another way is to use a graphical tool to resolve the merge conflicts</span></span><br><span class="line">git mergetool</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> After that, run `git status` to verify that all conflicts have been resolved</span></span><br><span class="line">git status</span><br><span class="line"><span class="meta">#</span><span class="bash"> Finally, commit your merge.</span></span><br><span class="line">git commit -m &quot;merge commit&quot;</span><br></pre></td></tr></table></figure>
+<h3><span id="33-branch-management">3.3 Branch Management</span></h3><p>To see the last commit on each branch, run <code>git branch -v</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -v</span><br></pre></td></tr></table></figure>
+<p>The useful <code>--merged</code> and <code>--no-merged</code> options can filter this list to branches that you have or have not yet merged into the branch you’re currently on. Also, you can specify a branch name to replace the default ==current branch==</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch --merged &lt;branchname&gt;</span><br><span class="line">git branch --no-merged &lt;branchname&gt;</span><br></pre></td></tr></table></figure>
+<h3><span id="34-branching-workflows">3.4 Branching Workflows</span></h3><h4><span id="341-long-running-branches">3.4.1 Long-Running branches</span></h4><p>The stable branches are farther down the line in your commit history, and the bleeding-edge branches are farther up the history.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/lr-branches-1.png" alt="A linear view of progressive-stability branching."></p>
+<p><img src="https://git-scm.com/book/en/v2/images/lr-branches-2.png" alt="A ``silo&#39;&#39; view of progressive-stability branching."></p>
+<h4><span id="342-topic-branches">3.4.2 Topic branches</span></h4><p>Topic branch is a ==short-lived== branch for a single particular feature or related work.</p>
+<p>Consider an example below:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/topic-branches-1.png" alt="Multiple topic branches."></p>
+<p>Ignore the <code>iss91</code> branch and merge both <code>dumbidea</code> and <code>iss91v2</code> into the <code>master</code> branch.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/topic-branches-2.png" alt="History after merging `dumbidea` and `iss91v2`."></p>
+<h3><span id="35-remote-branches">3.5 Remote Branches</span></h3><h4><span id="351-fetching">3.5.1 Fetching</span></h4><p>When you clone a repository from a server:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/remote-branches-1.png" alt="Server and local repositories after cloning."></p>
+<p>As long as you stay out of contact with your origin server, your <code>origin/master</code> pointer doesn’t move:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/remote-branches-2.png" alt="Local and remote work can diverge."></p>
+<p>To synchronize your work with a given remote, you can run a <code>git fetch &lt;remote&gt;</code> command. This command looks up which server <code>origin</code> is, fetches any data from it that you don’t yet have, and updates your local database, moving your <code>origin/master</code> pointer to its new, more up-to-date position.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/remote-branches-3.png" alt="`git fetch` updates your remote references."></p>
+<p>To demonstrate having multiple remote servers and what remote branches for those remote projects look like, here we can add a new remote server <code>teamone</code>.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/remote-branches-4.png" alt="Adding another server as a remote."></p>
+<p>Now you can run <code>git fetch teamone</code> to fetch everything the remote <code>teamone</code> server has that you don’t have yet. Here Git fetches no data but sets a remote-tracking branch called <code>teamone/master</code> to point to the commit that <code>teamone</code> has its <code>master</code> branch.</p>
+<p>​    <img src="https://git-scm.com/book/en/v2/images/remote-branches-5.png" alt="Remote tracking branch for `teamone/master`."></p>
+<p>It’s important to note that when you do a fetch that brings down new remote-tracking branches, you don’t automatically have local, editable copies of them. In other words, in this case, you don’t have a new <code>master</code> branch — you have only an <code>teamone/master</code> pointer that you can’t modify.</p>
+<h4><span id="352-pushing">3.5.2 Pushing</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> git push &lt;remote&gt; &lt;branch&gt;</span></span><br><span class="line">git push origin serverfix</span><br><span class="line"><span class="meta">#</span><span class="bash"> is equivalent to `refs/heads/serverfix:refs/heads/serverfix`, or</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> git push &lt;remote&gt; &lt;localbranch&gt;:&lt;remotebranch&gt;</span></span><br><span class="line">git push origin serverfix:awesomebranch</span><br><span class="line"><span class="meta">#</span><span class="bash"> Below is called a `refspec`. The `-u` flag is short <span class="keyword">for</span> `--set-upstream` <span class="built_in">which</span> configures the branches <span class="keyword">for</span> easier pushing and pulling later</span></span><br><span class="line">git push -u origin featureB:featureBee</span><br></pre></td></tr></table></figure>
+<p>To merge this work into your current working branch, you can run <code>git merge origin/serverfix</code>. If you want your own local branch of the remote master branch that you can work on, you can base it off your remote-tracking branch:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b serverfix origin/serverfix</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">which</span> is equivalent to</span></span><br><span class="line">git checkout --track origin/serverfix</span><br><span class="line"><span class="meta">#</span><span class="bash"> or even, <span class="keyword">if</span> the branch name you<span class="string">&#x27;re trying to checkout doesn&#x27;</span>t exist and exactly matches a name on only one remote, Git will create a tracking branch <span class="keyword">for</span> you.</span></span><br><span class="line">git checkout serverfix</span><br></pre></td></tr></table></figure>
+<h4><span id="353-tracking-branches">3.5.3 Tracking branches</span></h4><p>Checking out a local branch from a remote-tracking branch automatically creates what is called a “tracking branch” (and the branch it tracks is called an “upstream branch”). </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> to change the upstream branch you<span class="string">&#x27;re tracking, you can use `-u` or `--set-upstream-to` option to `git branch`</span></span></span><br><span class="line">git branch -u origin/serverfix</span><br></pre></td></tr></table></figure>
+<p>To see what tracking branches you have set up, use <code>-vv</code> option to <code>git branch</code> command.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -vv</span><br></pre></td></tr></table></figure>
+<h4><span id="354-pulling">3.5.4 Pulling</span></h4><p>Generally it’s better to simply use the <code>fetch</code> and <code>merge</code> commands explicitly as the magic of <code>git pull</code> can often be confusing.</p>
+<h4><span id="355-deleting-remote-branches">3.5.5 Deleting remote branches</span></h4><p>You can delete a remote branch using the <code>--delete</code> option to <code>git push</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete serverfix</span><br></pre></td></tr></table></figure>
+<h3><span id="36-rebasing">3.6 Rebasing</span></h3><h4><span id="361-the-basic-rebase">3.6.1 The basic rebase</span></h4><p><img src="https://git-scm.com/book/en/v2/images/basic-rebase-1.png" alt="Simple divergent history."></p>
+<p>For three-way merging:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-rebase-2.png" alt="Merging to integrate diverged work history."></p>
+<p>However, there is another way: you can take the patch of the change that was introduced in <code>C4</code> and reapply it on top of <code>C3</code>. In Git, this is called <strong>rebasing</strong>. With <code>rebase</code> command, you can take all the changes that were committed on one branch and replay them on a different branch.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> check out the `experiment` branch, and <span class="keyword">then</span> rebase it onto the `master` branch</span></span><br><span class="line">git checkout expriment</span><br><span class="line">git rebase master</span><br></pre></td></tr></table></figure>
+<p>This operation works by going to the common ancestor of the two branches (the one you’re on and the one you’re rebasing onto), getting the diff introduced by each commit of the branch you’re on, saving those diffs to temporary files, resetting the current branch to the same commit as the branch you are rebasing onto, and finally applying each change in turn.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-rebase-3.png" alt="Rebasing the change introduced in `C4` onto `C3`."></p>
+<p>Do a fast-forward merge</p>
+<p><img src="https://git-scm.com/book/en/v2/images/basic-rebase-4.png" alt="Fast-forwarding the master branch."></p>
+<h4><span id="362-more-interesting-rebases">3.6.2 More interesting rebases</span></h4><p>Suppose you have a commit history like this:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/interesting-rebase-1.png" alt="A history with a topic branch off another topic branch."></p>
+<p>You want to merge your client-side changes into your mainline for a release, but you want to hold off on the server-side changes until it’s tested further. You can take the changes on client that aren’t on server(<code>C8</code> and <code>C9</code>) and replay them on your <code>master</code> branch by using <code>--onto</code> option of <code>git rebase</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase --onto master server client</span><br></pre></td></tr></table></figure>
+<p>This basically says, “Take the <code>client</code> branch, figure out the patches since it diverged from the <code>server</code> branch, and replay these patches in the <code>client</code> branch as if it was directly off the <code>master</code> branch instead.”</p>
+<p><img src="https://git-scm.com/book/en/v2/images/interesting-rebase-2.png" alt="Rebasing a topic branch off another topic branch."></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Do a Fast-forward Merge</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge client</span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/interesting-rebase-3.png" alt="Fast-forwarding your master branch to include the client branch changes."></p>
+<p>Now you want to pull in your <code>server</code> branch as well. You can rebase the server onto the <code>master</code> branch without having to check it out first by running <code>git rebase &lt;basebranch&gt; &lt;topicbranch&gt;</code> – which checks out the topic branch for you and replays it onto the base branch.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase master server</span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/interesting-rebase-4.png" alt="Rebasing your server branch on top of your master branch."></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Do a Fast-forward Merge</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge server</span><br><span class="line"><span class="meta">#</span><span class="bash"> And delete the `client` branch and the `server` branch</span></span><br><span class="line">git branch -d client</span><br><span class="line">git branch -d server</span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/interesting-rebase-5.png" alt="Final commit history."></p>
+<h4><span id="363-the-perils-of-rebasing">3.6.3 The perils of rebasing</span></h4><blockquote>
+<p>Do not rebase commits that exist outside your repository and people may have based work on them.</p>
+</blockquote>
+<p>Let’s look at an example of how rebasing work that you’re made public can cause problems. Suppose you clone from a central server and then do some work off  that. Your commit history looks like this:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/perils-of-rebasing-1.png" alt="Clone a repository, and base some work on it."></p>
+<p>Now, someone else does more work that includes a merge, and pushes that work to the central server. You fetch it and merge the new remote branch into your work, making your history look something like this:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/perils-of-rebasing-2.png" alt="Fetch more commits, and merge them into your work."></p>
+<p>Next, the person who pushed the merged work decides to go back and rebase their work instead; they do a <code>git push --force</code> to overwrite the history on the server. You then fetch from that server, bringing down the new commits.</p>
+<p><img src="https://git-scm.com/book/en/v2/images/perils-of-rebasing-3.png" alt="Someone pushes rebased commits, abandoning commits you’ve based your work on."></p>
+<p>If you do a <code>git pull</code> now, you’ll create a merge commit which includes both lines of history, and your repository will look like this:</p>
+<p><img src="https://git-scm.com/book/en/v2/images/perils-of-rebasing-4.png" alt="You merge in the same work again into a new merge commit."></p>
+<p>The author originally wanted to remove the <code>C4</code> and <code>C6</code> commits, but if you push your work back to the server, you’ll reintroduce all those commits to the central server.</p>
+<h4><span id="364-rebase-when-you-rebase">3.6.4 Rebase when you rebase</span></h4><p>If you do find yourself in a situation like the above one, i.e. if someone on your team force pushes changes that overwrite work that you’ve based work on, your challenge is to figure out what is yours and what they’ve rewritten.</p>
+<p>It turns out that in addition to the commit SHA-1 checksum, Git also calculates a checksum that is based just on the patch introduced with the commit. This is called a “patch-id”.</p>
+<p>For instance, in the previous scenario, if instead of doing a merge when we’re at Someone pushes rebased commits, abandoning commits you’ve based your work on we run <code>git rebase teamone/master</code>, Git will:</p>
+<ul>
+<li>Determine what work is unique to our branch (C2, C3, C4, C6, C7)</li>
+<li>Determine which are not merge commits (C2, C3, C4)</li>
+<li>Determine which have not been rewritten into the target branch (just C2 and C3, since C4 is the same patch as C4’)</li>
+<li>Apply those commits to the top of <code>teamone/master</code></li>
+</ul>
+<p><img src="https://git-scm.com/book/en/v2/images/perils-of-rebasing-5.png" alt="Rebase on top of force-pushed rebase work."></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull --rebase</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git fetch</span><br><span class="line">git rebase teamone/master</span><br></pre></td></tr></table></figure>
+<h4><span id="365-rebase-vs-merge">3.6.5 Rebase vs. Merge</span></h4><p>Now that  you’ve seen rebasing and merging in action, you may be wondering which one is better. </p>
+<p>The answer is ==It’s up to you==</p>
+<blockquote>
+<p>In general the way to get the best of both worlds is to rebase ==local changes== you’ve made but haven’t shared yet before you push them in order to clean up your story, but ==never== rebase anything you’ve pushed somewhere.</p>
+</blockquote>
+<h2><span id="chapter-5-distributed-git">Chapter 5 Distributed Git</span></h2><h3><span id="51-distributed-workflows">5.1 Distributed Workflows</span></h3><h4><span id="511-centralized-workflow">5.1.1 Centralized workflow</span></h4><p><img src="https://git-scm.com/book/en/v2/images/centralized_workflow.png" alt="Centralized workflow."><br><strong>Note</strong>: This workflow is the same as the one we’ve learnt above.</p>
+<h4><span id="512-integration-manager-workflow">5.1.2 Integration-Manager workflow</span></h4><p>The process works as follows:</p>
+<ol>
+<li>The project maintainer pushes to their public repository.</li>
+<li>A contributor clones that repository and makes changes.</li>
+<li>The contributor pushes to their own public copy.</li>
+<li>The contributor sends the maintainer an email asking them to pull changes.</li>
+<li>The maintainer adds the contributor’s repository as a remote and merges locally.</li>
+<li>The maintainer pushes merged changes to the main repository.</li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/integration-manager.png" alt="Integration-manager workflow."> </p>
+<h4><span id="513-dictator-and-lieutenants-workflow">5.1.3 Dictator and Lieutenants workflow</span></h4><p>This is generally used by huge projects with hundreds of collaborators. Various integration managers are in charge of certain parts of the repository, they’re called <em>lieutenants</em>. All the lieutenants have one integration manager known as the benevolent dictator. The process works like this:</p>
+<ol>
+<li>Regular developers work on their topic branch and rebase their work on top of <code>master</code>. The <code>master</code> branch is that of the reference repository to which the dictator pushes.</li>
+<li>Lieutenants merge the developer’s topic branches into their <code>master</code> branch.</li>
+<li>The dictator merges the lieutenants’ <code>master</code> branches into the dictator’s <code>master</code> branch.</li>
+<li>Finally, the dictator pushes that <code>master</code> branch to the reference repository so the other developers can rebase on it.</li>
+</ol>
+<p><img src="https://git-scm.com/book/en/v2/images/benevolent-dictator.png" alt="Benevolent dictator workflow."></p>
+<h3><span id="52-contributing-to-a-project">5.2 Contributing to a Project</span></h3><h4><span id="521-commit-guidelines">5.2.1 Commit guidelines</span></h4><ol>
+<li>Your submission should not contain any whitespace errors;</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> before your commit, run `git diff --check` to identifies possible whitespace errors and lists them <span class="keyword">for</span> you</span></span><br><span class="line">git diff --check</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Try to make each commit a logically separate changeset. ==At least one== commit per issue, with a useful message per commit. If some of the changes modify the same file, try to use <code>git add --patch</code> to ==partially stage files== (covered in detail in Interactive Staging). And this also makes it easier to ==revert== one of the changesets;</li>
+<li>Commit message should start with a single line that’s ==no more than about 50 characters== and that describes the changeset ==concisely==, <code>followed by</code> a ==blank line==, <code>followed by</code> a ==more detailed explanation==. Write your commit message in the imperative: “Fix bug” and not “Fixed bug” or “Fixes bug.” Here is a <a target="_blank" rel="noopener" href="https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">template originally written by Tim Pope</a> .</li>
+</ol>
+<h4><span id="522-private-small-team">5.2.2 Private small team</span></h4><p><img src="https://git-scm.com/book/en/v2/images/small-team-flow.png" alt="General sequence of events for a simple multiple-developer Git workflow."></p>
+<h4><span id="523-private-managed-team">5.2.3 Private managed team</span></h4><p><img src="https://git-scm.com/book/en/v2/images/managed-team-flow.png" alt="Basic sequence of this managed-team workflow."></p>
+<h4><span id="524-forked-public-project">5.2.4 Forked public project</span></h4><p>One can contribute to a public project via:</p>
+<ol>
+<li>forking</li>
+<li>email</li>
+</ol>
+<p>Basic contributing workflow:</p>
+<ol>
+<li> clone the main repository</li>
+<li> create a <code>topic</code> branch</li>
+<li> make some commits</li>
+<li> click the <code>fork</code> button</li>
+<li> add the forked repository URL as a new remote of your local repository</li>
+<li> push the <code>topic</code> branch you’re working on to your forked repository</li>
+<li> send a <em>pull request</em></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> the `git request-pull` <span class="built_in">command</span> takes the base branch into <span class="built_in">which</span> you want your topic branch pulled and the Git repository URL you want them to pull from, and produces a summary of all the changes you<span class="string">&#x27;re asking to be pulled</span></span></span><br><span class="line">git request-pull origin/master myfork</span><br></pre></td></tr></table></figure>
+<p>Tips:</p>
+<ol>
+<li>your local <code>master</code> branch always track <code>origin/master</code> branch, and to do your work in topic branches that you can easily discard if they’re rejected. This makes you easier to rebase your work to the tip of the main repository.</li>
+<li>if you want to submit a second topic of work to the project, don’t continue working on the topic branch you just pushed up, start over from the main repository’s <code>master</code> branch</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b featureB origin/master</span><br></pre></td></tr></table></figure>
+<p>Let’s say the project maintainer has pulled in a bunch of other patches and tried your first branch, but it no longer cleanly merges. In this case, you can try to rebase that branch on top of <code>origin/master</code>， ==resolve== the conflicts for the maintainer, and then resubmit your changes:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout featureA</span><br><span class="line">git rebase origin/master</span><br><span class="line">git push -f myfork featureA</span><br></pre></td></tr></table></figure>
+<p>Another scenario: the maintainer asks you to change an implementation detail of your topic, you can branch a new branch off the <code>origin/master</code> branch, and merge in your topic, change the implementation and push to <code>myfork</code> again.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b featureBv2 origin/master</span><br><span class="line">git merge --squash featureB</span><br><span class="line">... change implementation ...</span><br><span class="line">git commit</span><br><span class="line">git push myfork featureBv2</span><br></pre></td></tr></table></figure>
+<p>Here, the <code>--squash</code> option takes all the work on the merged branch and squashes it into one changeset producing the repository state as if a real merge happened, without actually making a merge commit. This means your future commit will have one parent only and ==allows you to introduce all the changes from another branch and then make more changes before recoding the new commit==. Also, the <code>--no-commit</code> option can be useful to delay the merge commit in case of the default merge process.</p>
+<h3><span id="53-maintaining-a-project">5.3 Maintaining a Project</span></h3><h4><span id="531-checking-out-remote-branches">5.3.1 Checking out remote branches</span></h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> got a remote URL from the contributor, add it as your remote repository</span></span><br><span class="line">git remote add team_member url</span><br><span class="line">git fetch team_member</span><br><span class="line">git checkout -b topic team_member/topic</span><br></pre></td></tr></table></figure>
+<h4><span id="532-determining-what-is-introduced">5.3.2 Determining what is introduced</span></h4><p>this section revisits some useful command and their variations.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> exclude commits between branches by add `--not` option before the branch name</span></span><br><span class="line">git log contrib --not master</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">which</span> is equivalent to</span></span><br><span class="line">git log master..contrib</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> to see what changes each commit introduces, remember that you can pass the `-p` option to `git <span class="built_in">log</span>` and it will append the diff introduced to each commit</span></span><br><span class="line">git diff contrib --not master -p</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> to see the changes added to the topic branch, <span class="keyword">do</span> a `diff` between the last commit of the branch you<span class="string">&#x27;re on and its common ancestor with another branch. This command shows you only the work your current topic branch has introduced since its common ancestor with master</span></span></span><br><span class="line">git diff master...contrib</span><br></pre></td></tr></table></figure>
+<h4><span id="533-integrating-contributed-work">5.3.3 Integrating contributed work</span></h4><h5><span id="5331-merging-workflows">5.3.3.1 merging workflows</span></h5><ol>
+<li><code>topic</code> branch -&gt; <code>master</code> branch</li>
+<li><code>topic</code> branch -&gt; <code>dev</code> branch &gt; <code>master</code> branch</li>
+<li><code>topic</code> branch -&gt; <code>integrate</code> branch -&gt; <code>dev</code> branch &gt; <code>master</code> branch</li>
+</ol>
+<h5><span id="5332-large-merge-workflows">5.3.3.2 large-merge workflows</span></h5><h5><span id="5333-rebasing-and-cherry-picking-workflows">5.3.3.3 rebasing and Cherry-Picking workflows</span></h5><ol>
+<li>rebase</li>
+<li>cherry-pick</li>
+</ol>
+<p>A ==cherry-pick== in Git is like a rebase for a ==single commit==. It takes the patch that was introduced in a commit and tries to reapply it ==on the branch you’re currently on==. This is useful if you have ==a number of commits on a topic branch== and you want to integrate ==only one of them==, or if you ==only have one commit on a topic branch== and you’d prefer to cherry-pick it rather than run rebase.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick e43a6</span><br></pre></td></tr></table></figure>
+<p><img src="https://git-scm.com/book/en/v2/images/rebasing-1.png" alt="Example history before a cherry-pick."></p>
+<p><img src="https://git-scm.com/book/en/v2/images/rebasing-2.png" alt="History after cherry-picking a commit on a topic branch."></p>
+<h4><span id="534-rerere">5.3.4 Rerere</span></h4><p>Rerere stands for “reuse recorded resolution”, it comes in two parts: ==a configuration== and ==a command==. It’s a way of shortcutting manual conflict resolution.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global rerere.enabled true</span><br></pre></td></tr></table></figure>
+<p>After enable <code>rerere</code>，whenever you do a merge that resolve conflicts, the resolution will be recorded in the cache in case you need it in the future. Run<code>git rerere</code> command when you’re fixing merge conflicts, Git checks its database of resolutions and tries to find a match with any current merge conflicts and resolve them automatically.</p>
+<h4><span id="535-tagging-your-releases">5.3.5 Tagging your releases</span></h4><p>==Tag== – You can recreate that release at any point, see <a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project">here</a> for more details.</p>
+<h2><span id="chapter-6-github">Chapter 6 GitHub</span></h2><h3><span id="61-contributing-to-a-project">6.1 Contributing to a Project</span></h3><h4><span id="611-the-github-flow">6.1.1 The GitHub flow</span></h4><ol>
+<li>Fork the project</li>
+<li>Create a topic branch from <code>master</code></li>
+<li>Make some commits to improve the project</li>
+<li>Push this branch to your GitHub project</li>
+<li>Open a Pull Request on GitHub</li>
+<li>Discuss, and optionally continue committing</li>
+<li>The project owner merges or closes the Pull Request</li>
+<li>Sync the uploaded master back to your fork</li>
+</ol>
+<h4><span id="612-advanced-pull-requests">6.1.2 Advanced pull requests</span></h4><p>How to fix merge conflicts?</p>
+<ol>
+<li><p>rebase your branch on top of whatever the target branch is (normally the <code>master</code> branch of the repository you forked)</p>
+</li>
+<li><p>merge the target branch (original repository) into your branch</p>
+<ol>
+<li>Add the original repository as a remote named “upstream”</li>
+<li>Fetch the newest work from that remote</li>
+<li>Merge the main branch of that repository into your topic branch</li>
+<li>Fix the conflict that occurred</li>
+<li>Push back up to the same topic branch</li>
+</ol>
+</li>
+</ol>
+<p>How do I reference the old Pull Request?</p>
+<ol>
+<li><p>simply put <code>#&lt;num&gt;</code> in any comment or description within the repository</p>
+</li>
+<li><p>put <code>username#&lt;num&gt;</code> referring to an Issue or Pull Request in a fork</p>
+</li>
+<li><p>put <code>username/repo#&lt;num&gt;</code> referring to something in another repository</p>
+</li>
+<li><p>same way for SHA-1 info to replace <code>&lt;num&gt;</code> to refer to a commit</p>
+<h3><span id="613-keep-your-github-public-repository-up-to-date">6.1.3 Keep your GitHub public repository up-to-date</span></h3></li>
+<li><p>If you were on another branch, return to <code>master</code></p>
+</li>
+<li><p>Fetch changes from URL and merge them into <code>master</code></p>
+</li>
+<li><p>Push your <code>master</code> branch to <code>origin</code></p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull URL</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>Automate Configuration:</p>
+<ol>
+<li>Add the source repository and give it a name.</li>
+<li>Set your <code>master</code> branch to fetch from the URL remote</li>
+<li>Define the default push repository to <code>origin</code></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add name URL</span><br><span class="line">git branch --set-upstream-to=name/master master</span><br><span class="line">git config --local remote.pushDefault origin</span><br></pre></td></tr></table></figure>
+<p>Be Careful:</p>
+<ol>
+<li>If you were on another branch, return to <code>master</code></li>
+<li>Fetch changes from URL and merge changes into <code>master</code></li>
+<li>Push your <code>master</code> branch to <code>origin</code></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<h3><span id="63-maintaining-a-project">6.3 Maintaining a Project</span></h3><h4><span id="631-managing-pull-requests">6.3.1 Managing pull requests</span></h4><ol>
+<li>receive the email</li>
+<li>iterate on Pull Requests page</li>
+<li>pull request refs for merging in many Pull Requests branches, this requires configuration</li>
+</ol>
+<h4><span id="632-pull-requests-on-pull-requests">6.3.2 Pull requests on pull requests</span></h4><h4><span id="633-contributing">6.3.3 Contributing</span></h4><p><code>CONTRIBUTING</code> file is for specifying your criterion of contributors contribute to your repository. If this file exists, GitHub will show some guidelines to the contributors when they create a Pull Request.</p>
+<h2><span id="chapter-7-git-tools">Chapter 7 Git Tools</span></h2><h3><span id="71-revision-selection">7.1 Revision Selection</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> use `git show` to examine the a specific commit</span></span><br><span class="line">git show ca82939</span><br><span class="line">git show topic</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> show full SHA-1 <span class="built_in">hash</span>, use `git rev-parse`</span></span><br><span class="line">git rev-parse c32394d</span><br><span class="line">git rev-parse dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> similar to shell <span class="built_in">history</span>, Git has `git reflog`</span></span><br><span class="line">git reflog</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> to see the fifth prior value of the HEAD of your repository, use @&#123;5&#125;</span></span><br><span class="line">git show HEAD@&#123;5&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> to see <span class="built_in">where</span> your `master` branch was yesterday</span></span><br><span class="line">git show master@&#123;yesterday&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> to see reflog information formatted like the `git <span class="built_in">log</span>` output, run `git <span class="built_in">log</span> -g`</span></span><br><span class="line">git log -g master</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> to show the parent of HEAD, use `^` or `~`</span></span><br><span class="line">git show HEAD^</span><br><span class="line"><span class="meta">#</span><span class="bash"> on Windows, use double `^^` or put the commit reference <span class="keyword">in</span> quotes</span></span><br><span class="line">git show HEAD^^</span><br><span class="line">git show &quot;HEAD^&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> you can also specify a number after `^` to identify <span class="built_in">which</span> parent you want, <span class="keyword">for</span> example, to see the second parent of `d921970` commit, <span class="keyword">for</span> the <span class="keyword">case</span> of more than one parent, especially the multi commit merge</span></span><br><span class="line">git show d921970^2</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> using either the `character` or `--not` before any reference from <span class="built_in">which</span> you don<span class="string">&#x27;t want to see reachable commits. The following three commands are equivalent:</span></span></span><br><span class="line">git log refA..refB</span><br><span class="line">git log ^refA refB</span><br><span class="line">git log refB --not refA</span><br><span class="line"><span class="meta">#</span><span class="bash"> to see all commits that are reachable from `refA` or `refB` but not from `refC`, you can use either of:</span></span><br><span class="line">git log refA refB ^refC</span><br><span class="line">git log refA refB --not refC</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> the triple-dot syntax, <span class="built_in">which</span> specifies all the commits that are reachable by either of two references but not by both of them. To make the output more useful, pass `--left-right` option to the <span class="built_in">command</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> result = union(<span class="built_in">set</span>(master), <span class="built_in">set</span>(experiment)) - intersection(<span class="built_in">set</span>(master), <span class="built_in">set</span>(experiment))</span></span><br><span class="line">git log --left-right master...experiment</span><br></pre></td></tr></table></figure>
+<h3><span id="72-interactive-staging">7.2 Interactive Staging</span></h3><p>If you run <code>git add</code> with the <code>-i</code> or <code>--interactive</code> option, Git enters an interactive shell mode,  it lists the changes you’ve staged on the left and unstaged changes on the right.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Some useful patch level commands:</span></span><br><span class="line">git add -p</span><br><span class="line"><span class="meta">#</span><span class="bash"> or</span></span><br><span class="line">git add --patch</span><br><span class="line"></span><br><span class="line">git reset --patch</span><br><span class="line"></span><br><span class="line">git checkout --patch</span><br></pre></td></tr></table></figure>
+<h3><span id="73-stashing-and-cleaning">7.3 Stashing and Cleaning</span></h3><h4><span id="731-stashing">7.3.1 Stashing</span></h4><p>To push a new stash onto your stack, run <code>git stash</code> or <code>git stash push</code>.</p>
+<p>To see which stashes you’ve stored, you can use <code>git stash list</code>.</p>
+<p>You can reapply the one you just stashed by using the <code>git stash apply</code> command, or if you want to apply one of the older stashes, you can specify it by naming it, like this: <code>git stash apply stash@&#123;2&#125;</code>. The changes to your files were reapplied, but the file you staged before wasn’t restaged. To do that, you must run <code>git stash apply</code> command with a <code>--index</code> option to tell the command to try to reapply the staged changes.</p>
+<p>To remove a stash from your stack, run <code>git stash drop</code> with the name of the stash. Alternatively, you can run <code>git stash pop</code> to apply the stash and then immediately drop it from your stack.</p>
+<p>With the <code>--keep-index</code> option, Git will stash all the changes, but also leaved the staged file to the working directory. The unstaged file will be removed.</p>
+<p>If you specify <code>--include-untracked</code> or <code>-u</code>, Git will include untracked files in the stash being created. However, including untracked files in the stash will still not include explicitly ignored files, which should be included by passing the <code>--all</code> or <code>-a</code> option.</p>
+<p>To interactively stash patches, pass <code>--patch</code> option to the <code>git stash</code> command.</p>
+<p>To create a branch from a stash, you can run <code>git stash branch &lt;new branchname&gt;</code>, which creates a new branch for you with your selected branch name, checks out the commit you were on when you stashed your work, reapplies your work there, and then drops the stash if it applies successfully.</p>
+<h4><span id="732-cleaning">7.3.2 Cleaning</span></h4><p>To clear all untracked files, use <code>git clean</code>. To remove all the untracked files in your working directory, you can run <code>git clean -f -d</code>, which removes any files and also any <em>subdirectories</em> that become empty as a result.</p>
+<p>If you want to see what it would do, you can run the command with the <code>--dry-run</code> (or <code>-n</code>) option, which means “do a dry run and tell me what you would have removed.”</p>
+<p>To keep all the files instead, use <code>git stash --all</code>.</p>
+<p>Add a <code>-x</code> option to the clean command to clear ignored files as well.</p>
+<h3><span id="75-searching">7.5 Searching</span></h3><p>Use <code>git grep</code> command to search the given pattern. By default, <code>git grep</code> will look through the files in ==your working directory==. To print out the line numbers where Git has found matches, use <code>-n</code> or <code>--line-number</code> option.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git grep -n movic</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> with `-c` or `--count` option to count the matches <span class="keyword">in</span> each file</span></span><br><span class="line">git grep -c movic</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> you can display the enclosing method or <span class="keyword">function</span> or class <span class="keyword">for</span> each matching string with either of the `-p` or `--show-function` options:</span></span><br><span class="line">git grep -p movic main.py</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> search multiple pattern <span class="keyword">in</span> the same line of text, use `--and` option</span></span><br><span class="line">git grep -n -e &quot;movic&quot; --and -e &quot;movie&quot;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> have a line <span class="built_in">break</span> after each file, use `--<span class="built_in">break</span>`, group all the matches belong to the same file, use `--heading`</span></span><br><span class="line">git grep -n --break --heading &quot;movic&quot; --and -e &quot;movie&quot;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> show the <span class="built_in">history</span> of a <span class="keyword">function</span> or line of code <span class="keyword">in</span> your codebase</span></span><br><span class="line">git log -L :&#123;pattern&#125;:file</span><br><span class="line"><span class="meta">#</span><span class="bash"> example</span></span><br><span class="line">git log -L :movic:main.py</span><br></pre></td></tr></table></figure>
+<h3><span id="76-rewriting-history">7.6 Rewriting History</span></h3><blockquote>
+<p>Don’t push your work until you’re happy with it</p>
+<p>Don’t amend your last commit if you’ve already pushed it</p>
+</blockquote>
+<p>To modify a commit that is farther back in your history, use <code>git rebase -i</code> tool.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i HEAD~3</span><br><span class="line"><span class="meta">#</span><span class="bash"> edit the file <span class="keyword">in</span> the editor, change the word `pick` to `edit` <span class="keyword">for</span> every commit you want to amend at the begining of the file, and save &amp; close it.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> example</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> pick f7f3f6d changed my name a bit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> edit 310154e updated README formatting and added blame</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> pick a5f4a0d added cat-file</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> run `git commit --amend` to amend your commit</span></span><br><span class="line">git commit --amend</span><br><span class="line"><span class="meta">#</span><span class="bash"> run `git rebase --<span class="built_in">continue</span>` to <span class="built_in">continue</span> amend later `edit` annotated commits</span></span><br><span class="line">git rebase --continue</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> To remove the commits or reorder the commits, simply remove the lines or reorder the lines <span class="keyword">in</span> the editor mentioned above</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> You can squash several commits to a single commit by specifying `squash` <span class="keyword">in</span> the editor, Git applies both that change and the change directly before it and makes you merge the commit together</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> example</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> pick f7f3f6d changed my name a bit</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> squash 310154e updated README formatting and added blame</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> squash a5f4a0d added cat-file</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> To Split a commit, specify `edit` of that commit <span class="keyword">in</span> the editor, when you are at that commit, reset the staging area, and instead stage the changes multiple <span class="built_in">times</span> as you expected, and finally run `git rebase --<span class="built_in">continue</span>` to <span class="built_in">continue</span> the rebase procedure</span></span><br></pre></td></tr></table></figure>
+<p><strong>The Nuclear Option: filter-branch</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">git filter-branch --tree-filter &quot;rm -f passwords.txt&quot; HEAD</span><br><span class="line"><span class="meta">#</span><span class="bash"> to rewrite all branch, pass `--all` to the <span class="built_in">command</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> The `--tree-filter` option runs the specified <span class="built_in">command</span> after each checkout of the project and <span class="keyword">then</span> recommits the results.</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> To clear the backup generated by this <span class="built_in">command</span>, run `git filter-branch -f`</span></span><br><span class="line">git filter-branch -f</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Changing Email Address Globally</span></span><br><span class="line">git filter-branch --commit-filter &#x27;</span><br><span class="line">        if [ &quot;$GIT_AUTHOR_EMAIL&quot; = &quot;schacon@localhost&quot; ];</span><br><span class="line">        then</span><br><span class="line">                GIT_AUTHOR_NAME=&quot;Scott Chacon&quot;;</span><br><span class="line">                GIT_AUTHOR_EMAIL=&quot;schacon@example.com&quot;;</span><br><span class="line">                git commit-tree &quot;$@&quot;;</span><br><span class="line">        else</span><br><span class="line">                git commit-tree &quot;$@&quot;;</span><br><span class="line">        fi&#x27; HEAD</span><br></pre></td></tr></table></figure>
+<h3><span id="77-reset-demystify">7.7 Reset Demystify</span></h3><ul>
+<li>The Head: your last commit on that branch</li>
+<li>The Index: your proposed next commit</li>
+<li>The Working Directory: working tree</li>
+</ul>
+<h4><span id="771-the-role-of-reset">7.7.1 The role of reset</span></h4><ol>
+<li>==Move the branch HEAD== points to (stop here if <code>--soft</code>)， opposite op of commit</li>
+<li>Make the index look like HEAD (stop here unless <code>hard</code>), default: <code>--mixed</code></li>
+<li>Make the working directory look like the index (be careful)</li>
+</ol>
+<h4><span id="772-reset-with-a-path">7.7.2 Reset with a path</span></h4><p>If you specify a path, <code>reset</code> will skip step 1, and limit the remainder of its actions to a specific file or set of files. It is the opposite operation of <code>git add</code>.</p>
+<p>So you can directly pull content of arbitrary commit to the current index tree, without copying that content to the working directory before head.</p>
+<h4><span id="773-squashing">7.7.3 Squashing</span></h4><p>Skip the intermediate commit, use <code>reset --soft</code> followed by <code>git commit</code></p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-squash-r1.png" alt="reset squash r1"></p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-squash-r2.png" alt="reset squash r2"></p>
+<p><img src="https://git-scm.com/book/en/v2/images/reset-squash-r3.png" alt="reset squash r3"></p>
+<h4><span id="774-check-it-out">7.7.4 Check it out</span></h4><p>Checkout with path will overwrites the file in the working directory. It would be exactly like <code>git reset --hard [branch] file</code>, it does not move HEAD.</p>
+<h4><span id="775-cheat-sheet">7.7.5 Cheat-sheet</span></h4><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">HEAD</th>
+<th align="left">Index</th>
+<th align="left">Workdir</th>
+<th>WD Safe?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Commit Level</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code>reset --soft [commit]</code></td>
+<td align="left">REF</td>
+<td align="left">NO</td>
+<td align="left">NO</td>
+<td>YES</td>
+</tr>
+<tr>
+<td align="left"><code>reset [commit]</code></td>
+<td align="left">REF</td>
+<td align="left">YES</td>
+<td align="left">NO</td>
+<td>YES</td>
+</tr>
+<tr>
+<td align="left"><code>reset --hard [commit]</code></td>
+<td align="left">REF</td>
+<td align="left">YES</td>
+<td align="left">YES</td>
+<td><strong>NO</strong></td>
+</tr>
+<tr>
+<td align="left"><code>checkout &lt;commit&gt;</code></td>
+<td align="left">HEAD</td>
+<td align="left">YES</td>
+<td align="left">YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td align="left"><strong>File Level</strong></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td></td>
+</tr>
+<tr>
+<td align="left"><code>reset [commit] &lt;paths&gt;</code></td>
+<td align="left">NO</td>
+<td align="left">YES</td>
+<td align="left">NO</td>
+<td>YES</td>
+</tr>
+<tr>
+<td align="left"><code>checkout [commit] &lt;paths&gt;</code></td>
+<td align="left">NO</td>
+<td align="left">YES</td>
+<td align="left">YES</td>
+<td><strong>NO</strong></td>
+</tr>
+</tbody></table>
+<h3><span id="78-advance-merging">7.8 Advance Merging</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Use `git merge --abort` to abort a merge</span></span><br><span class="line">git merge --abort</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Use `-Xignore-all-space` or `-Xignore-space-change`. The first option ignores whitespace completely when comparing lines, the second treats sequences of one or more whitespace characters as equivalent</span></span><br><span class="line">git merge -Xignore-space-change [whitespace branch]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckwzz69o80018zcw223w723u9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" rel="tag">代码管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/20/%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          工具整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">DVC学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%98%E5%8C%96/">优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">常用工具整理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/">车道线检测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/Latex/">Latex</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVC/" rel="tag">DVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/" rel="tag">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" rel="tag">代码管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" rel="tag">常用工具整理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" rel="tag">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" rel="tag">整数规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" rel="tag">车道线检测</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DVC/" style="font-size: 10px;">DVC</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" style="font-size: 10px;">代码管理</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" style="font-size: 10px;">常用工具整理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" style="font-size: 10px;">数据管理</a> <a href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" style="font-size: 10px;">整数规划</a> <a href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道线检测</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/10/%E6%9C%80%E4%BC%98%E5%8C%96%E9%80%89%E8%AF%BE/">一个有趣的最优化选课问题</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/21/BezierLaneNet/">BezierLaneNet</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/20/%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">工具整理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">DVC学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 movic<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

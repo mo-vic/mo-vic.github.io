@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hexo维护和使用笔记 | movic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[toc]    Hexo个人博客小站维护和使用笔记 一、 Hexo的安装 二、建站 三、配置 四、写作 4.1 新建文章 4.2 Front-matter 4.3 标签插件 4.4 文章资源文件夹 4.5 写作流程   五、插件 六、部署 七、npm 八、存在的问题    Hexo个人博客小站维护和使用笔记才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo维护和使用笔记">
+<meta property="og:url" content="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="movic">
+<meta property="og:description" content="[toc]    Hexo个人博客小站维护和使用笔记 一、 Hexo的安装 二、建站 三、配置 四、写作 4.1 新建文章 4.2 Front-matter 4.3 标签插件 4.4 文章资源文件夹 4.5 写作流程   五、插件 六、部署 七、npm 八、存在的问题    Hexo个人博客小站维护和使用笔记才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/banner.jpg">
+<meta property="article:published_time" content="2021-02-16T04:05:31.000Z">
+<meta property="article:modified_time" content="2021-12-10T05:11:15.947Z">
+<meta property="article:author" content="movic">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/banner.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="movic" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">movic</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo维护和使用笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2021-02-16T04:05:31.000Z" itemprop="datePublished">2021-02-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>►<a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hexo维护和使用笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%B0%8F%E7%AB%99%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0">Hexo个人博客小站维护和使用笔记</a></li>
+<li><a href="#%E4%B8%80-hexo%E7%9A%84%E5%AE%89%E8%A3%85">一、 Hexo的安装</a></li>
+<li><a href="#%E4%BA%8C-%E5%BB%BA%E7%AB%99">二、建站</a></li>
+<li><a href="#%E4%B8%89-%E9%85%8D%E7%BD%AE">三、配置</a></li>
+<li><a href="#%E5%9B%9B-%E5%86%99%E4%BD%9C">四、写作</a><ul>
+<li><a href="#41-%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0">4.1 新建文章</a></li>
+<li><a href="#42-front-matter">4.2 Front-matter</a></li>
+<li><a href="#43-%E6%A0%87%E7%AD%BE%E6%8F%92%E4%BB%B6">4.3 标签插件</a></li>
+<li><a href="#44-%E6%96%87%E7%AB%A0%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E5%A4%B9">4.4 文章资源文件夹</a></li>
+<li><a href="#45-%E5%86%99%E4%BD%9C%E6%B5%81%E7%A8%8B">4.5 写作流程</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E6%8F%92%E4%BB%B6">五、插件</a></li>
+<li><a href="#%E5%85%AD-%E9%83%A8%E7%BD%B2">六、部署</a></li>
+<li><a href="#%E4%B8%83-npm">七、npm</a></li>
+<li><a href="#%E5%85%AB-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98">八、存在的问题</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="hexo个人博客小站维护和使用笔记">Hexo个人博客小站维护和使用笔记</span></h2><p>才想起自己很久前搭的这个小破站，当时没有写下安装和使用的笔记，导致现在连博客都不知道怎么发了。今天重新回忆一下当时安装和使用的流程，并整理成笔记，方便日后查阅。</p>
+<h2><span id="一-hexo的安装">一、 Hexo的安装</span></h2><p><code>Hexo</code>的安装需要先安装<code>Node.js</code>和<code>Git</code>，具体安装步骤参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/%E3%80%82%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E7%AE%97%E6%98%AF%E6%AF%94%E8%BE%83%E7%AE%80%E5%8D%95%E3%80%82">https://hexo.io/zh-cn/docs/。安装过程算是比较简单。</a></p>
+<h2><span id="二-建站">二、建站</span></h2><p>建站教程参考链接：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/setup">https://hexo.io/zh-cn/docs/setup</a></p>
+<p>安装 <code>Hexo</code> 完成后，执行下列命令，<code>Hexo</code> 将会在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;folder&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> npm install</span></span><br></pre></td></tr></table></figure>
+<p>文件目录结构：</p>
+<p><strong>scaffolds</strong>：模板文件夹，新建文章时，<code>Hexo</code>会根据模板来建立<code>.md</code>文件。</p>
+<p><strong>source</strong>：存放用户资源的地方，除了<code>_posts</code>文件夹之外，开头命名为<code>_</code>（下划线）的文件/文件夹和隐藏文件将会被忽略。</p>
+<p><strong>themes</strong>：主题文件夹。</p>
+<a id="more"></a>
+
+
+<h2><span id="三-配置">三、配置</span></h2><p>根目录下的<code>_config.yml</code>为配置文件，配置项较多，可参考：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a></p>
+<h2><span id="四-写作">四、写作</span></h2><h3><span id="41-新建文章">4.1 新建文章</span></h3><p>执行下列命令创建一篇新文章或者新的页面：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> hexo new [layout] &lt;title&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>Hexo</code>默认以标题作为文件名称，但是可以通过设置目录下的<code>_config.yml</code>配置文件中的<code>new_post_name</code>参数来改变默认的文件名称格式。</p>
+<h3><span id="42-front-matter">4.2 Front-matter</span></h3><p>Front-matter是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量。其中<code>updated</code>参数用于指定更新日期。</p>
+<p>多个并列标签的设置方法：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">tags:</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">游戏</span></span><br><span class="line">	<span class="bullet">-</span> <span class="string">电影</span></span><br></pre></td></tr></table></figure>
+<p>多个并列分类以及多级分类的设置方法：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">categories:</span></span><br><span class="line">	<span class="bullet">-</span> [<span class="string">日常</span>, <span class="string">杂项</span>]</span><br><span class="line">	<span class="bullet">-</span> [<span class="string">学习</span>]</span><br></pre></td></tr></table></figure>
+<p>其中，<code>杂项</code>是<code>日常</code>的子分类，<code>学习</code>没有子分类。</p>
+<h3><span id="43-标签插件">4.3 标签插件</span></h3><p>用于插入图片、代码块以及引用等，大部分与<code>MarkDown</code>格式不同（代码块格式可以使用MarkDown格式）。</p>
+<h3><span id="44-文章资源文件夹">4.4 文章资源文件夹</span></h3><p>文章资源文件夹用于存放除了文章以外的所有资源文件，例如图片等。通过将<code>_config.yml</code>配置文件中的<code>post_asset_folder</code>选项设置为<code>true</code>来打开资源文件管理功能：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>当资源文件管理功能打开后，<code>Hexo</code>会在每一次通过<code>hexo new [layout] title</code>命令创建新文章时自动创建一个文章同名文件夹，将图片等资源文件放在该资源文件夹中，即可通过相对路径在文章中进行引用，即<code>{% asset_img filename.png %}</code>（若直接使用<code>![title](filename.png)</code>插入图片，由于<code>.md</code>文件跟图片资源文件还隔着一层目录，<code>Typora</code>编辑器上没法显示出图片；同时，以这种方式插入图片，会导致图片在主页无法显示，只有点击进入文章页面才能显示图片）。</p>
+<h3><span id="45-写作流程">4.5 写作流程</span></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 1. 新建文章</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> hexo new [layout] &lt;title&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 2. 设置分类和标签</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 3. 本地预览</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 4. 部署</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 5. 版本管理</span></span><br></pre></td></tr></table></figure>
+
+
+<h2><span id="五-插件">五、插件</span></h2><p><code>Hexo</code>插件的安装方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm install `plugin` --save</span></span><br></pre></td></tr></table></figure>
+
+
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/cocowool/hexo-image-link">hexo-image-link</a>：用于将<code>MarkDown</code>图片路径转换成<code>asset_img</code>语法格式，使得在<code>Hexo</code>和<code>Typora</code>两边都能够正常显示图片。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image file label](./markdown-file-name/local-image.png) -&gt; {% asset_img label local-image.png %}</span><br></pre></td></tr></table></figure>
+<p>实际使用中发现如果加上图片路径最前面的<code>./</code>会导致出现<code>Markdown Image Path does not exists!</code>错误，去掉图片路径最前面的<code>./</code>对<code>Typora</code>编辑器引用图片没有影响：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![image file label](markdown-file-name/local-image.png) -&gt; {% asset_img label local-image.png %}</span><br></pre></td></tr></table></figure>
+<img src="/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/banner.jpg" class title="图片测试">
+
+
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-filter-mathjax">hexo-filter-mathjax</a>：该插件不需要安装任何其他的数学插件，渲染引擎可以使用<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>。包含公式的文章需要在<code>.md</code>文件前面的Front-matter中打开<code>mathjax</code>：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>手机端可以比较完美显示公式，<code>$$</code>公式块过长会自动加入滚动条，<code>hexo-math</code>插件使用<code>{% %}</code>tag插入公式，而我比较习惯于使用<code>$</code>或<code>$$</code>插入公式，所以选择了<a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-filter-mathjax">hexo-filter-mathjax</a>插件，公式的换行符<code>\\</code>需要在<code>\begin{array} \end{array}</code>之类的环境中才能够生效。<br><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="8.607ex" height="2.185ex" role="img" focusable="false" viewbox="0 -883.9 3804.1 965.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="1D404" d="M723 286Q721 284 700 145T677 3V0H39V62H147V618H39V680H660V676Q662 670 675 552T691 428V424H629V428Q629 429 627 448T618 494T601 541Q574 593 527 605T382 618H374H304V384H336Q338 384 347 384T361 384T376 386T392 390T407 397T421 407T432 423Q442 444 443 482V501H505V205H443V224Q442 258 435 278T411 307T380 318T336 322H304V62H375H394Q429 62 449 62T497 66T541 76T577 95T609 126T632 170T651 232Q661 287 661 289H723V286Z"/></g></g><g data-mml-node="mo" transform="translate(1033.8, 0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mi" transform="translate(2089.6, 0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"/></g><g data-mml-node="msup" transform="translate(2967.6, 0)"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"/></g><g data-mml-node="mn" transform="translate(433, 413) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g></g></g></g></svg></mjx-container></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-toc">hexo-toc</a>：用于插入目录。与<code>Typora</code>插入目录不同，<a target="_blank" rel="noopener" href="https://github.com/bubkoo/hexo-toc">hexo-toc</a>不使用<code>[toc]</code>。使用<code>[toc]</code>标签会导致页面出现一个莫名其妙的纯文本<code>[toc]</code>，看着很不舒服。</p>
+</li>
+</ol>
+<ol start="4">
+<li><a target="_blank" rel="noopener" href="https://github.com/u2sb/hexo-tag-mmedia">hexo-tag-mmedia</a>：媒体插入插件。</li>
+</ol>
+<h2><span id="六-部署">六、部署</span></h2><p>使用<code>Travis CI</code>将<code>Hexo</code>博客部署到GitHub Pages上：</p>
+<ol>
+<li><p>新建一个仓库，以<code>&lt;GitHub用户名&gt;.github.io</code>命名；</p>
+</li>
+<li><p>将<code>Hexo</code>站点文件夹推送到新建的<code>GitHub</code>仓库中；</p>
+</li>
+<li><p>将<code>Travis CI</code>添加到<code>GitHub</code>账户中；</p>
+</li>
+<li><p>前往<code>GitHub</code>的<code>Application settings</code>，配置<code>Travis CI</code>的权限使其能够访问<code>GitHub</code>仓库；</p>
+</li>
+<li><p>到<code>GitHub</code>账户设置中，选择<code>Developer settings -&gt; Personal access tokens -&gt; Generate new token</code>，只勾选<code>repo</code>的权限并生成一个新的<code>Token</code>；</p>
+</li>
+<li><p>前往<code>Travis CI</code>，在仓库的设置页面中，新建一个环境变量，变量名为<code>GH_TOKEN</code>，值为生成的<code>Token</code>，确保<code>DISPLAY VALUE IN BUILD LOG</code>不被勾选避免<code>Token</code>泄漏；</p>
+</li>
+<li><p>在<code>Hexo</code>站点文件夹中新建一个<code>.travis.yml</code>文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="number">10</span> <span class="comment"># use nodejs v10 LTS</span></span><br><span class="line"><span class="attr">cache:</span> <span class="string">npm</span></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">source</span> <span class="comment"># 只构建你的站点源文件分支</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span> <span class="comment"># generate static files</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">pages</span></span><br><span class="line">  <span class="attr">skip-cleanup:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">github-token:</span> <span class="string">$GH_TOKEN</span></span><br><span class="line">  <span class="attr">keep-history:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">on:</span></span><br><span class="line">    <span class="attr">branch:</span> <span class="string">master</span> <span class="comment"># 部署在你的master分支，确保GitHub Pages的部署分支为master</span></span><br><span class="line">  <span class="attr">local-dir:</span> <span class="string">public</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将<code>.travis.yml</code>推送到<code>GitHub</code>仓库中；</p>
+</li>
+<li><p>前往<code>GitHub</code>仓库，修改<code>GitHub Pages</code>的部署分支为<code>master</code>；</p>
+</li>
+<li><p>创建<code>source</code>站点源文件分支，使用<code>Git</code>做好版本控制；</p>
+</li>
+<li><p>前往<code>Travis CI</code>，在仓库的设置页面中，打开<code>Build pushed branches</code>选项。</p>
+</li>
+</ol>
+<h2><span id="七-npm">七、npm</span></h2><p><code>package.json</code>类似于<code>requirements.txt</code>。</p>
+<h2><span id="八-存在的问题">八、存在的问题</span></h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>不能渲染双等号==高亮==语法；</li>
+<li><code>Typora</code>的内部链接可能存在bug，如：跳转至<a href="#%E4%BA%94%E3%80%81%E6%8F%92%E4%BB%B6">五、插件</a>，在<code>Typora</code>中跳转到了<a href="#%E5%85%AD%E3%80%81%E9%83%A8%E7%BD%B2">六、部署</a>。实际上不管跳转目标怎么写，似乎都会跳转到<a href="#%E5%85%AD%E3%80%81%E9%83%A8%E7%BD%B2">六、部署</a>。其次，<code>Hexo</code>在生成目录时，标题中的中文顿号<code>、</code>会被转换成<code>-</code>，大写字母会被转换成小写字母，因此当标题中不存在中文顿号和大写字母时，内部链接才能同时在<code>Hexo</code>和<code>Typora</code>中生效。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/16/hexo%E7%BB%B4%E6%8A%A4%E5%92%8C%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-id="ckwzz69mg0006zcw2cbul4ylb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Latex学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的个人小站</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%98%E5%8C%96/">优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">常用工具整理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/">车道线检测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/Latex/">Latex</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVC/" rel="tag">DVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/" rel="tag">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" rel="tag">代码管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" rel="tag">常用工具整理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" rel="tag">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" rel="tag">整数规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" rel="tag">车道线检测</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DVC/" style="font-size: 10px;">DVC</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" style="font-size: 10px;">代码管理</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" style="font-size: 10px;">常用工具整理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" style="font-size: 10px;">数据管理</a> <a href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" style="font-size: 10px;">整数规划</a> <a href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道线检测</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/10/%E6%9C%80%E4%BC%98%E5%8C%96%E9%80%89%E8%AF%BE/">一个有趣的最优化选课问题</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/21/BezierLaneNet/">BezierLaneNet</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/20/%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">工具整理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">DVC学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 movic<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

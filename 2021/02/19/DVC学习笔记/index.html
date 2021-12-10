@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>DVC学习笔记 | movic</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[toc]    DVC学习笔记 1、使用流程 2、DVC初始化 3、远程DVC存储配置 4、添加文件到DVC仓库 5、提交数据到远程存储 6、从远程存储取回特定版本的数据 7、绑定数据与代码 8、数据流程 9、流程可视化 10、复现 11、添加指标 12、对比不同实验的结果 13、版本回退 14、修改默认缓存目录 15、配置使用链接引用策略 16、更新数据 17、存在的问题      DVC学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DVC学习笔记">
+<meta property="og:url" content="http://yoursite.com/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="movic">
+<meta property="og:description" content="[toc]    DVC学习笔记 1、使用流程 2、DVC初始化 3、远程DVC存储配置 4、添加文件到DVC仓库 5、提交数据到远程存储 6、从远程存储取回特定版本的数据 7、绑定数据与代码 8、数据流程 9、流程可视化 10、复现 11、添加指标 12、对比不同实验的结果 13、版本回退 14、修改默认缓存目录 15、配置使用链接引用策略 16、更新数据 17、存在的问题      DVC学习">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2021-02-19T02:30:46.000Z">
+<meta property="article:modified_time" content="2021-12-10T05:11:15.838Z">
+<meta property="article:author" content="movic">
+<meta property="article:tag" content="DVC">
+<meta property="article:tag" content="数据管理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png">
+  
+    <link rel="alternate" href="/atom.xml" title="movic" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">movic</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-DVC学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2021-02-19T02:30:46.000Z" itemprop="datePublished">2021-02-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>►<a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DVC学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#dvc%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">DVC学习笔记</a><ul>
+<li><a href="#1-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B">1、使用流程</a></li>
+<li><a href="#2-dvc%E5%88%9D%E5%A7%8B%E5%8C%96">2、DVC初始化</a></li>
+<li><a href="#3-%E8%BF%9C%E7%A8%8Bdvc%E5%AD%98%E5%82%A8%E9%85%8D%E7%BD%AE">3、远程DVC存储配置</a></li>
+<li><a href="#4-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0dvc%E4%BB%93%E5%BA%93">4、添加文件到DVC仓库</a></li>
+<li><a href="#5-%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E5%88%B0%E8%BF%9C%E7%A8%8B%E5%AD%98%E5%82%A8">5、提交数据到远程存储</a></li>
+<li><a href="#6-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E5%AD%98%E5%82%A8%E5%8F%96%E5%9B%9E%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC%E7%9A%84%E6%95%B0%E6%8D%AE">6、从远程存储取回特定版本的数据</a></li>
+<li><a href="#7-%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%BB%A3%E7%A0%81">7、绑定数据与代码</a></li>
+<li><a href="#8-%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B">8、数据流程</a></li>
+<li><a href="#9-%E6%B5%81%E7%A8%8B%E5%8F%AF%E8%A7%86%E5%8C%96">9、流程可视化</a></li>
+<li><a href="#10-%E5%A4%8D%E7%8E%B0">10、复现</a></li>
+<li><a href="#11-%E6%B7%BB%E5%8A%A0%E6%8C%87%E6%A0%87">11、添加指标</a></li>
+<li><a href="#12-%E5%AF%B9%E6%AF%94%E4%B8%8D%E5%90%8C%E5%AE%9E%E9%AA%8C%E7%9A%84%E7%BB%93%E6%9E%9C">12、对比不同实验的结果</a></li>
+<li><a href="#13-%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80">13、版本回退</a></li>
+<li><a href="#14-%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%BC%93%E5%AD%98%E7%9B%AE%E5%BD%95">14、修改默认缓存目录</a></li>
+<li><a href="#15-%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E9%93%BE%E6%8E%A5%E5%BC%95%E7%94%A8%E7%AD%96%E7%95%A5">15、配置使用链接引用策略</a></li>
+<li><a href="#16-%E6%9B%B4%E6%96%B0%E6%95%B0%E6%8D%AE">16、更新数据</a></li>
+<li><a href="#17-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98">17、存在的问题</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="dvc学习笔记">DVC学习笔记</span></h1><h2><span id="1-使用流程">1、使用流程</span></h2><ol>
+<li>DVC的安装：<a target="_blank" rel="noopener" href="https://dvc.org/doc/install">https://dvc.org/doc/install</a></li>
+<li>刚开始使用DVC管理数据需要先做<a href="#2-dvc%E5%88%9D%E5%A7%8B%E5%8C%96">初始化</a>。</li>
+<li>如果需要远程存储做备份，需要先<a href="#3-%E8%BF%9C%E7%A8%8Bdvc%E5%AD%98%E5%82%A8%E9%85%8D%E7%BD%AE">配置</a>远程仓库。</li>
+<li><a href="#4-%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%88%B0dvc%E4%BB%93%E5%BA%93">添加</a>文件到DVC仓库，DVC会生成对应的<code>.dvc</code>文件，这些文件必须使用Git进行管理；如果同一份数据已经被修改，需要将该文件重新添加到DVC仓库，但是记得在添加后用<code>dvc gc</code>进行垃圾回收以减少存储空间的浪费。==注意==：垃圾回收必须配置远程仓库，每个版本的数据必须<code>push</code>到远程存储，不然将导致文件丢失。</li>
+<li>不推荐手动添加代码生成的数据到DVC仓库，建议使用<code>dvc run</code>，见<a href="#7-%E7%BB%91%E5%AE%9A%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%BB%A3%E7%A0%81">这里</a>和<a href="#11-%E6%B7%BB%E5%8A%A0%E6%8C%87%E6%A0%87">这里</a>。如果正处于调参和Debug等快速迭代阶段，需要使用<code>dvc run --no-commit</code>命令，避免DVC将调试中期的文件自动添加到DVC仓库造成存储浪费。当参数或代码调试好了之后，再手动用<code>dvc commit</code>命令提交数据文件到DVC仓库。</li>
+<li>建议将脚本写成<code>shell</code>脚本，这样子命令行参数变化时，<code>dvc repro</code>命令可以侦测到变化，从而自动运行复现步骤。另外，<code>dvc run</code>命令需要将主脚本（如：<code>main.py</code>）的所有依赖（例如所有命令行参数）包含进去。</li>
+<li>在调参和调试代码阶段，使用<code>dvc repro --no-commit</code>命令，当参数或代码调试好了之后，再手动用<code>dvc commit</code>命令提交数据文件到DVC仓库。</li>
+<li>配合Git做版本控制。</li>
+<li>指标的计算需要在代码中实现，并写入到指定文件中，并将指标文件放入<code>dvc run</code>的<code>-o</code>参数中。</li>
+<li>避免保存无意义的权重文件，否则将浪费大量存储空间。</li>
+</ol>
+<h2><span id="2-dvc初始化">2、DVC初始化</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建Git仓库，用于管理代码和DVC元文件</span></span><br><span class="line">git init</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建DVC仓库，生成DVC元文件和目录文件</span></span><br><span class="line">dvc init</span><br></pre></td></tr></table></figure>
+<p>执行上述命令后，当前目录下将会创建如下文件：</p>
+<img src="/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" class title="目录结构">
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将DVC元文件提交至Git的本地仓库</span></span><br><span class="line">git commit -m &quot;initialize DVC&quot;</span><br></pre></td></tr></table></figure>
+
+
+<a id="more"></a>
+
+
+
+<h2><span id="3-远程dvc存储配置">3、远程DVC存储配置</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将远程存储创建在本机上,`-d`表示使用myremote作为默认远程</span></span><br><span class="line">dvc remote add -d myremote /tmp/dvc-storage</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将DVC配置文件提交至Git的本地仓库</span></span><br><span class="line">git commit .dvc/config -m &quot;initialize DVC local remote&quot;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置ssh远程存储</span></span><br><span class="line">dvc remote add -d myssh ssh://username@xxx.xxx.xxx.xxx:/home/username</span><br><span class="line">dvc remote modify myssh ask_password true</span><br></pre></td></tr></table></figure>
+<p>其他类型的远程存储配置见：<a target="_blank" rel="noopener" href="https://dvc.org/doc/get-started/configure">教程</a></p>
+<h2><span id="4-添加文件到dvc仓库">4、添加文件到DVC仓库</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加`data.xml`文件</span></span><br><span class="line">dvc add data/data.xml</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将DVC添加文件时记录信息的`*.dvc`文件和`.gitignore`添加至Git的缓存区</span></span><br><span class="line">git add data/.gitignore data/data.xml.dvc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将DVC添加文件时记录信息的`*.dvc`文件和`.gitignore`提交至Git的本地仓库</span></span><br><span class="line">git commit -m &quot;add raw data to DVC&quot;</span><br></pre></td></tr></table></figure>
+<p>总的来说，DVC负责管理文件，Git负责管理文件的版本记录文件。</p>
+<h2><span id="5-提交数据到远程存储">5、提交数据到远程存储</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将本地数据仓库备份到远程存储</span></span><br><span class="line">dvc push</span><br></pre></td></tr></table></figure>
+<p>==注意==：将数据提交到远程存储后，需要将当前数据状态下的DVC元文件与配置文件提交到Git的本地仓库中，并备份到Git的远程仓库。具体看<code>git commit</code>命令和<code>git push</code>命令。</p>
+<h2><span id="6-从远程存储取回特定版本的数据">6、从远程存储取回特定版本的数据</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 取回当前工作区中所有`.dvc`文件所关联的数据</span></span><br><span class="line">dvc pull</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取回当前工作区中特定`*.dvc`文件所关联的数据</span></span><br><span class="line">dvc pull *.dvc</span><br></pre></td></tr></table></figure>
+<p>==注意==：从远程存储取回特定版本的数据前，需要从Git仓库中检出特定版本的<code>.dvc</code>文件。具体看<code>git pull</code>命令和<code>git checkout</code>命令。</p>
+<h2><span id="7-绑定数据与代码">7、绑定数据与代码</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用`dvc run`命令创建流程的一个步骤</span></span><br><span class="line">dvc run -f prepare.dvc \</span><br><span class="line">          -d src/prepare.py -d data/data.xml \</span><br><span class="line">          -o data/prepared \</span><br><span class="line">          python src/prepare.py data/data.xml</span><br></pre></td></tr></table></figure>
+<p>==四要素==：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">值</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-f</td>
+<td align="center">*.dvc</td>
+<td align="center">记录文件，记录该步骤的依赖，输出和命令。用于<code>dvc repro</code>复现</td>
+</tr>
+<tr>
+<td align="center">-d</td>
+<td align="center">*</td>
+<td align="center">执行该步骤所需的所有依赖文件</td>
+</tr>
+<tr>
+<td align="center">-o</td>
+<td align="center">*</td>
+<td align="center">该步骤执行结束后产生的输出文件，自动添加到DVC的版本控制下</td>
+</tr>
+<tr>
+<td align="center">命令</td>
+<td align="center">命令</td>
+<td align="center">任意命令，语言无关。可以是<code>python</code>，也可以是<code>shell</code>，也可以是其他</td>
+</tr>
+</tbody></table>
+<p>==注意==：记得将该步骤的记录文件以及相关代码提交到Git仓库。每个单独的实验结束后可以加上一个tag，具体参照<code>git tag</code>命令。</p>
+<h2><span id="8-数据流程">8、数据流程</span></h2><p>流程由多个<code>dvc run</code>组建。</p>
+<h2><span id="9-流程可视化">9、流程可视化</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 数据流程</span></span><br><span class="line">dvc pipeline show --ascii train.dvc</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令流程</span></span><br><span class="line">dvc pipeline show --ascii train.dvc --commands</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出流程</span></span><br><span class="line">dvc pipeline show --ascii train.dvc --outs</span><br></pre></td></tr></table></figure>
+<h2><span id="10-复现">10、复现</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 指定一个记录文件，复现该步骤</span></span><br><span class="line">dvc repro train.dvc</span><br></pre></td></tr></table></figure>
+<h2><span id="11-添加指标">11、添加指标</span></h2><p>在<code>dvc run</code>命令中添加<code>-M</code>参数，可以对模型的指标进行跟踪，前提是==需要在代码中加入产生<code>*.metric</code>的代码段==。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dvc run -f evaluate.dvc \</span><br><span class="line">          -d src/evaluate.py -d model.pkl -d data/features \</span><br><span class="line">          -M auc.metric \</span><br><span class="line">          python src/evaluate.py model.pkl \</span><br><span class="line">                 data/features auc.metric</span><br></pre></td></tr></table></figure>
+<h2><span id="12-对比不同实验的结果">12、对比不同实验的结果</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果每组实验都有对应的tag，并且都有跟踪的指标，使用`dvc metric show -T`对比实验结果</span></span><br><span class="line">dvc metric show -T</span><br></pre></td></tr></table></figure>
+<h2><span id="13-版本回退">13、版本回退</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 全版本回退</span></span><br><span class="line">git checkout commit_hash</span><br><span class="line">dvc checkout</span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定文件版本回退</span></span><br><span class="line">git checkout commit_hash -- file</span><br><span class="line">dvc checkout</span><br></pre></td></tr></table></figure>
+<h2><span id="14-修改默认缓存目录">14、修改默认缓存目录</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 允许同一个项目的多个成员共用一个缓存目录，</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 减少存储开支</span></span><br><span class="line">mkdir dvc-cache</span><br><span class="line">dvc config cache.dir /dvc-cache</span><br></pre></td></tr></table></figure>
+<h2><span id="15-配置使用链接引用策略">15、配置使用链接引用策略</span></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 可以组合多个选项</span></span><br><span class="line">dvc config cache.type hardlink/symlink/copy</span><br><span class="line"><span class="meta">#</span><span class="bash"> 若`cache.type`配置为`hardlink`或`symlink`，</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以使用下述命令将工作区文件设置为只读文件，避免</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 误操作修改了数据</span></span><br><span class="line">dvc config cache.protected true</span><br></pre></td></tr></table></figure>
+<h2><span id="16-更新数据">16、更新数据</span></h2><ol>
+<li>替换文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> `dvc remove`删除工作区文件，缓冲区内文件仍然存在</span></span><br><span class="line">dvc remove old_file.dvc</span><br><span class="line">touch new_file</span><br><span class="line">dvc add new_file</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>修改文件内容</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dvc unprotect file.dvc</span><br><span class="line">vim file</span><br><span class="line">dvc add file</span><br></pre></td></tr></table></figure>
+<h2><span id="17-存在的问题">17、存在的问题</span></h2><ol>
+<li>不支持<code>glob pattern</code>；</li>
+<li>目前操作系统不支持<code>reflink</code>，版本控制用的是复制策略，数据太大时会占用太多的存储空间，同时需要消耗更多的时间。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckwzz69m60001zcw2996t27rp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DVC/" rel="tag">DVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" rel="tag">数据管理</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git学习笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Latex学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%98%E5%8C%96/">优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">常用工具整理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/">车道线检测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/Latex/">Latex</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DVC/" rel="tag">DVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Latex/" rel="tag">Latex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/misc/" rel="tag">misc</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" rel="tag">代码管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" rel="tag">常用工具整理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" rel="tag">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" rel="tag">整数规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" rel="tag">车道线检测</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DVC/" style="font-size: 10px;">DVC</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" style="font-size: 10px;">代码管理</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" style="font-size: 10px;">常用工具整理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" style="font-size: 10px;">数据管理</a> <a href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" style="font-size: 10px;">整数规划</a> <a href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道线检测</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/10/%E6%9C%80%E4%BC%98%E5%8C%96%E9%80%89%E8%AF%BE/">一个有趣的最优化选课问题</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/21/BezierLaneNet/">BezierLaneNet</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/20/%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">工具整理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Git学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/19/DVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">DVC学习笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 movic<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
