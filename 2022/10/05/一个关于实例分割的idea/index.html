@@ -14,14 +14,16 @@
 <meta property="og:site_name" content="movic">
 <meta property="og:description" content="[toc] 一、开篇矫情一下2020年的时候有过一个关于实例分割的想法，一开始还想着做实验验证一下这个想法是否可行，但是自己没有服务器，兜里也没几个钱可以租服务器了，一个人孤军奋战，每一步都走得挺艰难的，而且觉得自己像是个民科，慢慢地就没了热情，后来也就不了了之。 读研后偶尔也会想起这个事，我想，还是记录一下吧，当作回忆或者分享都可以。 二、Yet-Another Curve GCN (YACG)">
 <meta property="og:locale">
-<meta property="og:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/.%5C%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea%5Coverview.png">
-<meta property="og:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/.%5C%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea%5Cbuild_graph.png">
+<meta property="og:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/overview.png">
+<meta property="og:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/corner_point_detection.png">
+<meta property="og:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/build_graph.png">
+<meta property="og:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/graph_traversal.png">
 <meta property="article:published_time" content="2022-10-05T01:48:21.000Z">
-<meta property="article:modified_time" content="2022-10-05T03:53:30.248Z">
+<meta property="article:modified_time" content="2022-10-05T04:17:42.606Z">
 <meta property="article:author" content="movic">
 <meta property="article:tag" content="实例分割">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/.%5C%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea%5Coverview.png">
+<meta name="twitter:image" content="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/overview.png">
   
     <link rel="alternate" href="/atom.xml" title="movic" type="application/atom+xml">
   
@@ -211,7 +213,8 @@ mjx-container[display="true"] + br {
         <p>[toc]</p>
 <h1><span id="一-开篇矫情一下">一、开篇矫情一下</span></h1><p>2020年的时候有过一个关于实例分割的想法，一开始还想着做实验验证一下这个想法是否可行，但是自己没有服务器，兜里也没几个钱可以租服务器了，一个人孤军奋战，每一步都走得挺艰难的，而且觉得自己像是个民科，慢慢地就没了热情，后来也就不了了之。</p>
 <p>读研后偶尔也会想起这个事，我想，还是记录一下吧，当作回忆或者分享都可以。</p>
-<h1><span id="二-yet-another-curve-gcn-yacg">二、Yet-Another Curve GCN (YACG)</span></h1><h2><span id="21-算法overview">2.1 算法Overview</span></h2><p><img src=".%5C%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea%5Coverview.png" alt="overview"></p>
+<h1><span id="二-yet-another-curve-gcn-yacg">二、Yet-Another Curve GCN (YACG)</span></h1><h2><span id="21-算法overview">2.1 算法Overview</span></h2><img src="/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/overview.png" class title="overview">
+
 <p>整个算法的pipeline可拆分成如下部分：</p>
 <ol>
 <li>物体边缘的角点（拐点）检测；</li>
@@ -226,14 +229,17 @@ mjx-container[display="true"] + br {
 
 
 <h2><span id="22-角点检测">2.2 角点检测</span></h2><p>目标物体可以通过其外轮廓进行建模。这里，角点指的是目标物体轮廓曲线中变化较大的点（如曲率较大的点，导数不连续的点等）。可以通过一个主干网络预测整张图片中所有物体的角点，对于网络输出的Feature Map，其中每一个Grid若包含角点，则设置训练标签为<code>1</code>，否则为<code>0</code>。对于目标物体尺度不一致的问题，可以使用FPN之类的方法进行解决。</p>
-<p>![corner point detection](.\一个关于实例分割的idea\corner point detection.png)</p>
+<img src="/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/corner_point_detection.png" class title="corner point detection">
+
 <h2><span id="22-构建节点向量">2.2 构建节点向量</span></h2><p>根据角点检测结果，保留预测结果为<code>1</code>的Grid，将Grid的特征向量与Grid的坐标进行拼接，作为节点的特征向量。</p>
 <h2><span id="23-构建图">2.3 构建图</span></h2><p>以某种策略连接节点，最简单的可以是k最近邻连接（假设位置接近的角点大概率属于同一个物体）。连接两个角点的边编码了物体轮廓的分段形状信息。</p>
-<p><img src=".%5C%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea%5Cbuild_graph.png" alt="build graph"></p>
+<img src="/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/build_graph.png" class title="build graph">
+
 <h2><span id="24-应用图卷积网络">2.4 应用图卷积网络</span></h2><p>由于稠密图中的节点坐标不是目标物体的精确坐标，且图中存在无效连接（跨物体的角点），需要做进一步的处理。</p>
 <p>应用图卷积神经网络，对每个节点预测其精确坐标，对于每条边，预测其有效性（是否保留连接）以及分段曲线参数。对于分段曲线，可以选择贝塞尔曲线，B样条曲线，但我找到一种可能是更加合适的曲线：<a target="_blank" rel="noopener" href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.44.5770&rep=rep1&type=pdf">X-splines</a>。</p>
 <h2><span id="25-应用图遍历算法">2.5 应用图遍历算法</span></h2><p>应用经典的图遍历算法，分离不同的目标物体。</p>
-<p>![graph traversal](.\一个关于实例分割的idea\graph traversal.png)</p>
+<img src="/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/graph_traversal.png" class title="graph traversal">
+
 <h2><span id="26-构建更高层语义">2.6 构建更高层语义</span></h2><p>基于分离的目标物体，可以进一步构建图，预测其物体信息以及物体之间的附属关系（如预测带有空洞的物体）等。</p>
 <h2><span id="27-具体实现的探索">2.7 具体实现的探索</span></h2><p>在具体实现的时候，可以有不同的尝试，如：</p>
 <ol>
@@ -259,7 +265,7 @@ mjx-container[display="true"] + br {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/" data-id="cl8v3zd160006t4w28ey2amz2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/" data-id="cl8v4g1p2000akow2a8i955gr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2/" rel="tag">实例分割</a></li></ul>
