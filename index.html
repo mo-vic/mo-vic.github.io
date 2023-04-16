@@ -178,6 +178,57 @@ mjx-container[display="true"] + br {
       <div class="outer">
         <section id="main">
   
+    <article id="post-大学的时候写下的一段SQL查询" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2023/04/16/%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%97%B6%E5%80%99%E5%86%99%E4%B8%8B%E7%9A%84%E4%B8%80%E6%AE%B5SQL%E6%9F%A5%E8%AF%A2/" class="article-date">
+  <time datetime="2023-04-16T08:12:06.000Z" itemprop="datePublished">2023-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/misc/">misc</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/16/%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%97%B6%E5%80%99%E5%86%99%E4%B8%8B%E7%9A%84%E4%B8%80%E6%AE%B5SQL%E6%9F%A5%E8%AF%A2/">大学的时候写下的一段SQL查询</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2><span id="大学的时候写下的一段sql查询">大学的时候写下的一段SQL查询</span></h2><p>翻手机相册的时候发现一张截图：</p>
+<p><img src="%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%97%B6%E5%80%99%E5%86%99%E4%B8%8B%E7%9A%84%E4%B8%80%E6%AE%B5SQL%E6%9F%A5%E8%AF%A2%5CQuery.jpg" alt="Query"></p>
+<p>现在的我，对于SQL的印象就只剩下<code>SELECT * FROM</code>了，什么游标，子表全部忘得干干净净。不过我还记得这应该是大学数据库课程的某个作业吧，当时一直想着能不能在一条SQL语句中，实现作业的要求。那时候想了很久才想出来，很有成就感。虽然题目的要求是什么，都有哪些表，现在都记不起来了，再加上现在的自己是真的很菜，翻到这张截图的时候很是感慨，当时就很喜欢写这种一行代码，超短代码又或者是优雅代码的实现。记得还学过一个用Python的<code>dict</code>模拟<code>switch</code>语句的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;a&quot;</span>: <span class="keyword">lambda</span> x: f1(x),</span><br><span class="line">    <span class="string">&quot;b&quot;</span>: <span class="keyword">lambda</span> y: f2(y),</span><br><span class="line">    <span class="string">&quot;c&quot;</span>: <span class="keyword">lambda</span> z: f3(z),</span><br><span class="line">&#125;[<span class="string">&quot;b&quot;</span>](x)</span><br></pre></td></tr></table></figure>
+<p>以及Python交换两个对象的方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x,y = y, x</span><br></pre></td></tr></table></figure>
+
+
+<p>隔了好几年再看自己的代码，确实有种很陌生的感觉。我想，找点时间，把我以前折腾过的东西都记录记录吧，虽然都是黑历史，但是也是成长史，以后回来看看也挺好的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2023/04/16/%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%97%B6%E5%80%99%E5%86%99%E4%B8%8B%E7%9A%84%E4%B8%80%E6%AE%B5SQL%E6%9F%A5%E8%AF%A2/" data-id="clgj5wwmf0000u8w24n3ob5o9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/misc/" rel="tag">misc</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-CPP多态与虚函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/04/12/CPP%E5%A4%9A%E6%80%81%E4%B8%8E%E8%99%9A%E5%87%BD%E6%95%B0/" class="article-date">
@@ -205,7 +256,7 @@ mjx-container[display="true"] + br {
     <div class="article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
-<h1 id="CPP多态与虚函数"><a href="#CPP多态与虚函数" class="headerlink" title="CPP多态与虚函数"></a>CPP多态与虚函数</h1><p>印象中对于多态的理解是，通过父类指针调用类方法时，将根据指针指向的对象类型调用相应的类方法。今天我突然有了一个疑问，如果父类中有一个非虚函数调用了一个虚函数，并且在子类中对该虚函数进行了重写，那么通过子类对象或者基类指针调用该方法时，程序的行为会是什么样的呢？</p>
+<h2 id="CPP多态与虚函数"><a href="#CPP多态与虚函数" class="headerlink" title="CPP多态与虚函数"></a>CPP多态与虚函数</h2><p>印象中对于多态的理解是，通过父类指针调用类方法时，将根据指针指向的对象类型调用相应的类方法。今天我突然有了一个疑问，如果父类中有一个非虚函数调用了一个虚函数，并且在子类中对该虚函数进行了重写，那么通过子类对象或者基类指针调用该方法时，程序的行为会是什么样的呢？</p>
         
           <p class="article-more-link">
             <a href="/2023/04/12/CPP%E5%A4%9A%E6%80%81%E4%B8%8E%E8%99%9A%E5%87%BD%E6%95%B0/#more">Read More</a>
@@ -943,133 +994,6 @@ mjx-container[display="true"] + br {
 
 
   
-    <article id="post-Latex学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2021-02-16T08:20:07.000Z" itemprop="datePublished">2021-02-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a>►<a class="article-category-link" href="/categories/%E8%AF%AD%E8%A8%80/Latex/">Latex</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Latex学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[toc]</p>
-<!-- toc -->
-
-<ul>
-<li><a href="#latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">Latex学习笔记</a><ul>
-<li><a href="#latex%E6%96%87%E6%A1%A3%E8%AF%AD%E6%B3%95">Latex文档语法</a><ul>
-<li><a href="#class">class</a></li>
-<li><a href="#preamble">preamble</a></li>
-<li><a href="#%E6%A0%87%E9%A2%98-%E4%BD%9C%E8%80%85-%E6%97%A5%E6%9C%9F">标题、作者、日期</a></li>
-<li><a href="#%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A">添加注释</a></li>
-<li><a href="#%E7%B2%97%E4%BD%93-%E6%96%9C%E4%BD%93-%E4%B8%8B%E5%88%92%E7%BA%BF">粗体、斜体、下划线</a></li>
-<li><a href="#%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87">插入图片</a></li>
-<li><a href="#%E5%9B%BE%E7%89%87%E8%AF%B4%E6%98%8E%E6%A0%87%E7%AD%BE%E4%B8%8E%E5%BC%95%E7%94%A8">图片说明，标签与引用</a></li>
-<li><a href="#%E8%A1%A8%E6%A0%BC">表格</a></li>
-<li><a href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8">无序列表</a></li>
-<li><a href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8">有序列表</a></li>
-<li><a href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F">数学公式</a></li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E6%8E%92%E7%89%88">基本排版</a><ul>
-<li><a href="#%E6%91%98%E8%A6%81">摘要</a></li>
-<li><a href="#%E6%AE%B5%E8%90%BD">段落</a></li>
-<li><a href="#%E7%AB%A0%E8%8A%82%E5%92%8C%E5%B0%8F%E8%8A%82">章节和小节</a></li>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#miktex%E4%B8%8Etexmaker%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8">MikTex与TexMaker的安装与使用</a><ul>
-<li><a href="#%E5%AE%89%E8%A3%85miktex">安装MikTex</a></li>
-<li><a href="#texmaker%E7%9A%84%E4%BD%BF%E7%94%A8">TexMaker的使用</a><ul>
-<li><a href="#1-%E9%85%8D%E7%BD%AE">1. 配置</a><ul>
-<li><a href="#11-%E9%85%8D%E7%BD%AE%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81">1.1 配置字符集编码</a></li>
-<li><a href="#12-%E9%85%8D%E7%BD%AElatex%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4">1.2 配置Latex相关命令</a></li>
-<li><a href="#13-%E9%85%8D%E7%BD%AE%E6%8B%BC%E5%86%99%E6%A3%80%E6%9F%A5">1.3 配置拼写检查</a></li>
-</ul>
-</li>
-<li><a href="#2-%E7%BC%96%E8%BE%91">2. 编辑</a><ul>
-<li><a href="#21-%E5%BF%AB%E9%80%9F%E6%96%87%E6%A1%A3%E5%90%91%E5%AF%BC">2.1 快速文档向导</a></li>
-<li><a href="#22-%E7%BB%93%E6%9E%84%E5%8C%96%E6%96%87%E6%A1%A3">2.2 结构化文档</a></li>
-<li><a href="#23-%E6%9C%80%E5%A4%9A%E4%B8%89%E4%B8%AA%E4%B9%A6%E7%AD%BE%E5%8D%95%E5%87%BB%E8%A1%8C%E5%8F%B7%E6%B7%BB%E5%8A%A0">2.3 最多三个书签，单击行号添加</a></li>
-<li><a href="#24-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%96%87%E6%9C%AC">2.4 格式化文本</a></li>
-<li><a href="#25-%E7%A9%BA%E6%A0%BC">2.5 空格</a></li>
-<li><a href="#26-%E6%8F%92%E5%85%A5%E5%88%97%E8%A1%A8">2.6 插入列表</a></li>
-<li><a href="#27-%E6%8F%92%E5%85%A5%E8%A1%A8%E6%A0%BC">2.7 插入表格</a></li>
-<li><a href="#28-%E6%8F%92%E5%85%A5%E5%88%B6%E8%A1%A8%E7%AC%A6">2.8 插入制表符</a></li>
-<li><a href="#29-%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87">2.9 插入图片</a></li>
-<li><a href="#210-%E5%BC%95%E7%94%A8%E5%92%8C%E5%A4%87%E6%B3%A8">2.10 引用和备注</a></li>
-<li><a href="#211-%E5%B8%B8%E7%94%A8%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7">2.11 常用数学符号</a></li>
-<li><a href="#212-%E5%8D%A0%E4%BD%8D%E7%AC%A6">2.12 占位符</a></li>
-</ul>
-</li>
-<li><a href="#3-%E7%BC%96%E8%AF%91%E6%96%87%E6%A1%A3">3. 编译文档</a><ul>
-<li><a href="#31-%E7%BC%96%E8%AF%91">3.1 编译</a></li>
-<li><a href="#32-%E6%B8%85%E9%99%A4%E7%94%9F%E6%88%90%E7%9A%84%E4%B8%AD%E9%97%B4%E6%96%87%E4%BB%B6">3.2 清除生成的中间文件</a></li>
-<li><a href="#33-%E5%90%8C%E6%AD%A5pdf">3.3 同步PDF</a></li>
-</ul>
-</li>
-<li><a href="#4-%E5%85%B6%E4%BB%96%E7%89%B9%E6%80%A7">4. 其他特性</a><ul>
-<li><a href="#41-%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">4.1 参考文献</a></li>
-<li><a href="#42-source-viewer">4.2 Source Viewer</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B7%AE%E5%BC%82%E9%AB%98%E4%BA%AE%E5%B7%A5%E5%85%B7git-latexdiff%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8">第三方差异高亮工具<code>git-latexdiff</code>的安装与使用</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<h1 id="Latex学习笔记"><a href="#Latex学习笔记" class="headerlink" title="Latex学习笔记"></a>Latex学习笔记</h1><h2 id="Latex文档语法"><a href="#Latex文档语法" class="headerlink" title="Latex文档语法"></a>Latex文档语法</h2><p><strong>教程地址</strong>：<a target="_blank" rel="noopener" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes</a></p>
-<h3 id="class"><a href="#class" class="headerlink" title="class"></a>class</h3><p>文档基本元素：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 文档类型通过\documentclass&#123;&#125;进行设置</span></span><br><span class="line"><span class="keyword">\documentclass</span>&#123;article&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 文档主体</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<p>写论文的话，可以从期刊官网下载模板，在模板的基础上进行修改，添加自己的内容。</p>
-<h3 id="preamble"><a href="#preamble" class="headerlink" title="preamble"></a>preamble</h3><p>指的是<code>\begin&#123;document&#125;</code>之前的所有内容，用于指定文档字符编码、导入使用的包等等。</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 12pt是指字体大小，a4paper是指纸张大小</span></span><br><span class="line"><span class="keyword">\documentclass</span>[12pt, a4paper]&#123;article&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">% 指定文档编码</span></span><br><span class="line"><span class="keyword">\usepackage</span>[utf8]&#123;inputenc&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="标题、作者、日期"><a href="#标题、作者、日期" class="headerlink" title="标题、作者、日期"></a>标题、作者、日期</h3><p>在<a href="#preamble">preamble</a>中添加。文章标题不能有下划线。</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[12pt, a4paper]&#123;article&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>[utf8]&#123;inputenc&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">\title</span>&#123;Hello World&#125;</span><br><span class="line"><span class="keyword">\author</span>&#123;movic <span class="keyword">\thanks</span>&#123;funded by the movic studio&#125;&#125;</span><br><span class="line"><span class="keyword">\date</span>&#123;April 2020&#125;</span><br></pre></td></tr></table></figure>
-<p>显示标题信息，在body中添加<code>\maketitle</code>：</p>
-<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/02/16/Latex%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cl8v4g1ot0003kow2daf991ih" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Latex/" rel="tag">Latex</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -1085,7 +1009,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%98%E5%8C%96/">优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">常用工具整理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%B8%90%E5%8F%98%E7%AE%97%E6%B3%95/">渐变算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/">车道线检测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/Latex/">Latex</a></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/">LeetCode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/LeetCode/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/misc/">misc</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BC%98%E5%8C%96/">优化</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/">个人网站</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/">常用工具整理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%B8%90%E5%8F%98%E7%AE%97%E6%B3%95/">渐变算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/">车道线检测</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/">语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%AD%E8%A8%80/Latex/">Latex</a></li></ul></li></ul>
     </div>
   </div>
 
@@ -1105,7 +1029,7 @@ mjx-container[display="true"] + br {
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CPP/" style="font-size: 10px;">CPP</a> <a href="/tags/DVC/" style="font-size: 10px;">DVC</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/LeetCode%E5%88%B7%E9%A2%98/" style="font-size: 10px;">LeetCode刷题</a> <a href="/tags/misc/" style="font-size: 10px;">misc</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" style="font-size: 10px;">代码管理</a> <a href="/tags/%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2/" style="font-size: 10px;">实例分割</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" style="font-size: 10px;">常用工具整理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" style="font-size: 10px;">数据管理</a> <a href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" style="font-size: 10px;">整数规划</a> <a href="/tags/%E6%B8%90%E5%8F%98%E8%BF%87%E6%B8%A1/" style="font-size: 10px;">渐变过渡</a> <a href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道线检测</a>
+      <a href="/tags/CPP/" style="font-size: 10px;">CPP</a> <a href="/tags/DVC/" style="font-size: 10px;">DVC</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Latex/" style="font-size: 10px;">Latex</a> <a href="/tags/LeetCode%E5%88%B7%E9%A2%98/" style="font-size: 10px;">LeetCode刷题</a> <a href="/tags/misc/" style="font-size: 20px;">misc</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E7%AE%A1%E7%90%86/" style="font-size: 10px;">代码管理</a> <a href="/tags/%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2/" style="font-size: 10px;">实例分割</a> <a href="/tags/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E6%95%B4%E7%90%86/" style="font-size: 10px;">常用工具整理</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86/" style="font-size: 10px;">数据管理</a> <a href="/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92/" style="font-size: 10px;">整数规划</a> <a href="/tags/%E6%B8%90%E5%8F%98%E8%BF%87%E6%B8%A1/" style="font-size: 10px;">渐变过渡</a> <a href="/tags/%E8%BD%A6%E9%81%93%E7%BA%BF%E6%A3%80%E6%B5%8B/" style="font-size: 10px;">车道线检测</a>
     </div>
   </div>
 
@@ -1127,6 +1051,10 @@ mjx-container[display="true"] + br {
       <ul>
         
           <li>
+            <a href="/2023/04/16/%E5%A4%A7%E5%AD%A6%E7%9A%84%E6%97%B6%E5%80%99%E5%86%99%E4%B8%8B%E7%9A%84%E4%B8%80%E6%AE%B5SQL%E6%9F%A5%E8%AF%A2/">大学的时候写下的一段SQL查询</a>
+          </li>
+        
+          <li>
             <a href="/2023/04/12/CPP%E5%A4%9A%E6%80%81%E4%B8%8E%E8%99%9A%E5%87%BD%E6%95%B0/">CPP多态与虚函数</a>
           </li>
         
@@ -1140,10 +1068,6 @@ mjx-container[display="true"] + br {
         
           <li>
             <a href="/2022/10/05/%E4%B8%80%E4%B8%AA%E5%85%B3%E4%BA%8E%E5%AE%9E%E4%BE%8B%E5%88%86%E5%89%B2%E7%9A%84idea/">一个关于实例分割的idea</a>
-          </li>
-        
-          <li>
-            <a href="/2021/12/10/%E6%9C%80%E4%BC%98%E5%8C%96%E9%80%89%E8%AF%BE/">一个有趣的最优化选课问题</a>
           </li>
         
       </ul>
